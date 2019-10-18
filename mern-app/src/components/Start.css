@@ -1,0 +1,12 @@
+.start{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.icon{
+    width: 100px;
+    height: 100px;
+}
