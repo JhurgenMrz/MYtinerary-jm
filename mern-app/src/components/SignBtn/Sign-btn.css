@@ -1,0 +1,9 @@
+.sign-btn{
+    margin:10px;
+    padding: 5px;
+    border-radius: 10px;
+    background-color: #fff;
+    border: 3px solid rgb(255, 29, 29);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+}

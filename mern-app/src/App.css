@@ -1,0 +1,19 @@
+.app{
+    margin-bottom: 50px;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+}
+.presentation{
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    margin: 10px 30px 0 30px;
+    padding: 0 20px;
+    font-size: 18px;
+}
+.Sign-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
