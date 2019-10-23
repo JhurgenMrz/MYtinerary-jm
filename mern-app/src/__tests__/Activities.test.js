@@ -7,6 +7,7 @@ import {Activities} from '../components/Activities/index';
 configure({adapter: new Adapter()})
 describe('A suite', function() {
   it('should render without throwing an error', function() {
-    expect(shallow(<Activities />).contains(<img className="nav-img" />)).toBe(false);
+    expect(shallow(<Activities />).contains(<img  />)).toBe(true);
+    // <img className="nav-img" src={nav} alt='Activities' />
   });
 });
