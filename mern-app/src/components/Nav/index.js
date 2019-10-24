@@ -48,8 +48,8 @@ export const UserInfo = ({sessionActive,show})=>{
     </section>
 }
 export const Nav = ({session}) => {
-    const [show, setShow] = useState(false)
-    const [menu, setMenu] = useState(false)
+    const [show, setShow] = useState(true)
+    const [menu, setMenu] = useState(true)
 
     
 

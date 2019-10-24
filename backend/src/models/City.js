@@ -11,4 +11,4 @@ const City = new Schema({
     }
 })
 
-module.exports = model('City',City)
+module.exports = model('cities',City)

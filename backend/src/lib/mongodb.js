@@ -1,25 +1,18 @@
+require('dotenv').config()
 const mongoose = require('mongoose');
 
-const urlDB = 'mongodb+srv://admin:<Pass>+@mytinerary-ateut.mongodb.net/test?retryWrites=true&w=majority'
+const urlDB = `mongodb+srv://admin:${process.env.PASSWORD_DB}@mytinerary-ateut.mongodb.net/merndb_my?retryWrites=true&w=majority`
 
-class Database {
-    constructor() {
-      this._connect()
-    }
-    
-  _connect() {
-       mongoose.connect(urlDB,{
-        useNewUrlParser: true,
-        useFindAndModify: false,
-        useUnifiedTopology: true
-       })
-         .then((data) => {
-           console.log('Connected')
-         })
-         .catch(err => {
-           console.error('Database connection error')
-         })
-    }
-  }
-  
-  module.exports = new Database()
+mongoose.connect(urlDB, {
+  useNewUrlParser: true,
+  useFindAndModify: false,
+  useUnifiedTopology: true,
+})
+  .then((data) => {
+    console.log('Connected')
+  })
+  .catch(err => {
+    console.error(err)
+  })
+
+module.exports = mongoose

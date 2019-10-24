@@ -2,9 +2,13 @@ const citiesCtrl = {}
 const City = require('../models/City');
 
 
-citiesCtrl.getCities = async (req, res) => {
-    const cities = await City.find()
-    res.json(cities)
+citiesCtrl.getCities = (req, res) => {
+    City.find((err, cities)=>{
+        if(err) throw err;
+        console.log(cities);
+        res.json(cities)
+
+    })
 }
 
 
