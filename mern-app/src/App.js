@@ -15,6 +15,7 @@ import {NotFound} from './pages/NotFound'
 export const App = () => {
   return <BrowserRouter>
     <div className="app"> 
+    <Nav/>
     <Activities/>
     <Switch>
       <Route exact path="/" component={LandingPage} />
@@ -23,7 +24,6 @@ export const App = () => {
       <Route exact path="/sign-up" component={SignUp} />
       <Route component={NotFound} />
     </Switch>
-    <Nav/>
     </div>
   </BrowserRouter>
 };

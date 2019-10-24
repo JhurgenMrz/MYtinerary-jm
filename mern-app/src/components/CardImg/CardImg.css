@@ -1,0 +1,20 @@
+.CardImg{
+    border: 1px solid #aaaaaa;
+    width: 48%;
+    height: 120px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 2px;
+    background-position: center center;
+    object-fit: cover;
+    background-size: cover;
+}
+
+.CardImg h5{
+    position: absolute;
+    background: #fff;
+    padding: 5px;
+
+}
