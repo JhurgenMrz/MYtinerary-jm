@@ -1,9 +1,12 @@
 .sign-btn{
-    margin:10px;
-    padding: 5px;
-    border-radius: 10px;
+    margin:7px;
+    /* padding: 5px; */
+    border-radius: 7px;
     background-color: #fff;
-    border: 3px solid rgb(255, 29, 29);
+    border: none;
+    border-bottom:3px solid rgb(114, 158, 255);
+    color: rgb(28, 78, 172);
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 18px;
+    font-size: 25px;
+    
 }

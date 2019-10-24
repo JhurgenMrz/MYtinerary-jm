@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const urlDB = 'mongodb+srv://admin:FeEsperanzayAmor7+@mytinerary-ateut.mongodb.net/test?retryWrites=true&w=majority'
+const urlDB = 'mongodb+srv://admin:<Pass>+@mytinerary-ateut.mongodb.net/test?retryWrites=true&w=majority'
 
 class Database {
     constructor() {

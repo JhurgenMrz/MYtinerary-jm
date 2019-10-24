@@ -1,6 +1,5 @@
 import React, { Fragment } from "react";
 import { Start } from "../components/Start/index";
-import { SignBtn } from "../components/SignBtn/index";
 import {CarouselImg} from '../components/CarouselImg'
 
 export const LandingPage = () => {

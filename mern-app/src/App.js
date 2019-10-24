@@ -15,7 +15,7 @@ import {NotFound} from './pages/NotFound'
 export const App = () => {
   return <BrowserRouter>
     <div className="app"> 
-    <Nav/>
+    <Nav session={true} />
     <Activities/>
     <Switch>
       <Route exact path="/" component={LandingPage} />

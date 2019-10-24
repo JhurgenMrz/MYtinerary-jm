@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { data } from '../../data.js'
-import { Gallery, GalleryImage } from 'react-gesture-gallery'
+import { Gallery } from 'react-gesture-gallery'
 import { CardImgContainer } from '../CardImgContainer'
 import './CarouselImg.css'
 
@@ -45,7 +45,6 @@ export const CarouselImg = () => {
         >
             {arrayData.map((el, index) => (
                 <CardImgContainer key={index} data={el} />
-                // <div><h5>Hello{index}</h5></div>
             ))}
         </Gallery>
     </div>
