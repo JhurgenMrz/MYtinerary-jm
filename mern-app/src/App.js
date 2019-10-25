@@ -1,9 +1,10 @@
 import React from 'react'
 import {BrowserRouter, Route,Switch} from 'react-router-dom'
+
+
 import './App.css'
 import {Activities} from './components/Activities/index'
 import {Nav} from './components/Nav/index'
-
 import {LandingPage} from './pages/LandingPage'
 import {Cities} from './pages/Cities'
 import {Login} from './pages/Login'
@@ -15,7 +16,7 @@ import {NotFound} from './pages/NotFound'
 export const App = () => {
   return <BrowserRouter>
     <div className="app"> 
-    <Nav session={true} />
+    <Nav session={false} />
     <Activities/>
     <Switch>
       <Route exact path="/" component={LandingPage} />

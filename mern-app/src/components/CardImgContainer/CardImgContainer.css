@@ -1,12 +1,9 @@
-.CardImgContainer{
+.CardImgContainer {
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
     width: auto;
     height: auto;
     margin: 5px;
-    /* border: 1px solid red; */
-}
-.CardImgContainer img{
     /* border: 1px solid red; */
 }
