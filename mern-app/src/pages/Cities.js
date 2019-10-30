@@ -1,35 +1,56 @@
-import React, { Fragment, useEffect } from "react";
-import { connect } from "react-redux";
-import * as citiesActions from "../actions/citiesActions";
+import React, { Fragment, useEffect } from 'react';
+import { connect } from 'react-redux';
+import * as citiesActions from '../actions/citiesActions';
 
 const Cities = props => {
-  useEffect(() => {
-    const { cities } = props;
-    if (!cities.length) {
-      props.getAllCities();
-    }
-  }, [props.cities]);
+	const handleOnChange = (e, cities) => {
+		let value = e.target.value.toLowerCase();
+		console.log(value);
+	};
 
-  return (
-    <Fragment>
-      <h3 style={{ marginLeft: 20 }}> CITIES </h3>
-      <section className="Cities">
-        {props.cities.map((el, index) => (
-          <div className="City" key={index}>
-            <h5> {el.country} </h5> <p> {el.city_name} </p>
-          </div>
-        ))}
-      </section>
-      <p>{props.error}</p>
-    </Fragment>
-  );
+	useEffect(() => {
+		console.log(props.cities);
+		if (!props.cities.length) {
+			props.getAllCities();
+			console.log(props.cities);
+		}
+	}, [props.cities]);
+
+	return (
+		<div style={{ margin: 20 }}>
+			<h3> CITIES </h3>
+			<section className='search'>
+				<label>Search</label>
+				<input
+					onChange={e => {
+						handleOnChange(e, props.cities);
+					}}
+				></input>
+			</section>
+			<section className='Cities'>
+				{props.loading ? (
+					<h3>Cargando...</h3>
+				) : props.error ? (
+					<h3>{props.error}</h3>
+				) : props.cities ? (
+					props.cities.map((el, index) => (
+						<div className='City' key={index}>
+							<h5> {el.country} </h5> <p> {el.city_name} </p>
+						</div>
+					))
+				) : (
+					''
+				)}
+			</section>
+		</div>
+	);
 };
 
 const mapStateToProps = reducers => {
-  return reducers.citiesReducer;
+	return reducers.citiesReducer;
 };
 
 export default connect(
-  mapStateToProps,
-  citiesActions
+	mapStateToProps,
+	citiesActions
 )(Cities);
