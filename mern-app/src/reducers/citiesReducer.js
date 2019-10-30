@@ -1,8 +1,8 @@
-import { GET_ALL, LOADING, ERROR, SEARCH_CITIES } from '../types/citiesTypes';
+import { GET_ALL, LOADING, ERROR, SEARCH_CITIES,CHANGE_INPUT } from '../types/citiesTypes';
 
 const INITIAL_STATE = {
 	cities: [],
-	filter: [],
+	filterCities: [],
 	word: '',
 	loading: false,
 	error: ''
@@ -31,8 +31,19 @@ export default (state = INITIAL_STATE, action) => {
 		case SEARCH_CITIES:
 			return {
 				...state,
-				word: action.payload
+				word: action.payload,
+				filterCities: state.cities.filter((city)=>{
+					if(action.payload === '') return true
+					const regExp = new RegExp(`^(${action.payload})+\\w`,'i')
+					return regExp.test(city.city_name)
+				}),
+
 			};
+		case CHANGE_INPUT:
+			return{
+				...state,
+				word: action.payload
+			}
 		default:
 			return state;
 	}

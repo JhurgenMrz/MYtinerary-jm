@@ -1,30 +1,38 @@
-import React, { Fragment, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import * as citiesActions from '../actions/citiesActions';
 
 const Cities = props => {
-	const handleOnChange = (e, cities) => {
-		let value = e.target.value.toLowerCase();
-		console.log(value);
-	};
+
+
+	const handleEnter = (e) => {
+    if(e.key === 'Enter'){
+      props.searchCities((e.target.value).toLowerCase())
+    }
+    
+  };
+  
+  const handleChange = e =>{
+    props.changeInput((e.target.value).toLowerCase())
+  }
 
 	useEffect(() => {
-		console.log(props.cities);
 		if (!props.cities.length) {
 			props.getAllCities();
-			console.log(props.cities);
 		}
-	}, [props.cities]);
+	}, []);
 
 	return (
 		<div style={{ margin: 20 }}>
 			<h3> CITIES </h3>
 			<section className='search'>
-				<label>Search</label>
+				<label>Search:</label>
 				<input
-					onChange={e => {
-						handleOnChange(e, props.cities);
-					}}
+          onChange={handleChange}
+          onKeyDown={handleEnter}
+          // value={(props.word.toUpperCase())}
+          placeholder='City...'
+          value={(props.word).toUpperCase()}
 				></input>
 			</section>
 			<section className='Cities'>
@@ -32,15 +40,18 @@ const Cities = props => {
 					<h3>Cargando...</h3>
 				) : props.error ? (
 					<h3>{props.error}</h3>
-				) : props.cities ? (
-					props.cities.map((el, index) => (
+				) : (props.filterCities.length !== 0) ? (
+					props.filterCities.map((el, index) => (
 						<div className='City' key={index}>
 							<h5> {el.country} </h5> <p> {el.city_name} </p>
 						</div>
 					))
-				) : (
-					''
-				)}
+				) : props.cities.map((el, index) => (
+						<div className='City' key={index}>
+							<h5> {el.country} </h5> <p> {el.city_name} </p>
+						</div>
+					))
+        }
 			</section>
 		</div>
 	);
