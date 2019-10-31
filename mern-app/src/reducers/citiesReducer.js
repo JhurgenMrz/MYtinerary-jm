@@ -34,7 +34,7 @@ export default (state = INITIAL_STATE, action) => {
 				word: action.payload,
 				filterCities: state.cities.filter((city)=>{
 					if(action.payload === '') return true
-					const regExp = new RegExp(`^(${action.payload})+\\w`,'i')
+					const regExp = new RegExp(`^(${action.payload})`,'i')
 					return regExp.test(city.city_name)
 				}),
 

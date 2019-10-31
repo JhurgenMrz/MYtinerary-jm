@@ -1,5 +1,7 @@
 .CarouselImg{
-    height: 290px;
+    height: 280px;
     width: 100%;
+    background-color: rgb(14, 129, 223);
+    border-radius: 7px;
     /* border: 1px solid red; */
 }

@@ -1,5 +1,5 @@
 .CardImg{
-    border: 1px solid #aaaaaa;
+    /* border: 1px solid #aaaaaa; */
     width: 48%;
     height: 120px;
     position: relative;
@@ -10,6 +10,7 @@
     background-position: center center;
     object-fit: cover;
     background-size: cover;
+    border-radius: 7px;
 }
 
 .CardImg h5{
