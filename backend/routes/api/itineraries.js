@@ -10,7 +10,7 @@ function itinerariesApi(app) {
   router.get("/:cityId", async function(req, res) {
     const { cityId } = req.params;
     const itineraries = await itinerServices.getItineraries(cityId);
-
+    //Funciona!
     res.status(200).json({
       data: itineraries,
       message: "Itineraries Listed"
