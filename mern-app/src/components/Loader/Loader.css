@@ -1,0 +1,96 @@
+.Loader__container{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    position: relative;
+}
+
+.bigSvg{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 150px;
+    height: 150px;
+    animation: rotateR 5s ease-in-out infinite;
+}
+.mediumSvg{
+    position: absolute;
+    /* border: 1px solid red; */
+    bottom: 0;
+    top: 15px;
+    width: 120px;
+    height: 120px;
+    animation: rotateL 4s ease-in-out infinite;
+}
+.smallSvg{
+    position: absolute;
+    /* border: 1px solid red; */
+    top: 29px;
+    bottom: 0;
+    width: 90px;
+    height: 90px;
+    animation: rotateR 2s ease-in-out infinite;
+}
+
+@keyframes rotateR
+{
+    0%
+    {
+        transform: rotate(0deg);
+    }
+    100%
+    {
+        transform: rotate(360deg);
+    }
+}
+@keyframes rotateL
+{
+    0%
+    {
+        transform: rotate(360deg);
+    }
+    100%
+    {
+        transform: rotate(0);
+    }
+}
+
+.svg circle{
+    width: 100%;
+    height: 100%;
+    fill: none;
+    stroke-width: 10;
+    /* stroke-linecap: round; */
+    transform: translate(5px, 5px);
+
+    /* Magic!!! */
+    stroke-dasharray: 40;
+    stroke-dashoffset: 40;
+    animation: animate 2s ease-in-out infinite;
+}
+.Fcolor{
+    stroke: #0051ff;
+}
+.Scolor{
+    stroke: #ff0037;
+}
+.Tcolor{
+    stroke: #ffc400;
+}
+
+@keyframes animate
+{
+    0%,100%
+    {
+        stroke-dashoffset: 40;
+    }
+    50%
+    {
+        stroke-dashoffset: 0;
+    }
+    50.1%
+    {
+        stroke-dashoffset: 80;
+    }
+}
+
