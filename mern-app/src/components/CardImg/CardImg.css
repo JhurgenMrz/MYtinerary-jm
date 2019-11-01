@@ -1,4 +1,4 @@
-.CardImg{
+.CardImg {
     /* border: 1px solid #aaaaaa; */
     width: 48%;
     height: 120px;
@@ -13,7 +13,7 @@
     border-radius: 7px;
 }
 
-.CardImg h5{
+.CardImg h5 {
     position: absolute;
     background: #fff;
     padding: 5px;
