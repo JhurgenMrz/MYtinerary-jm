@@ -1,0 +1,13 @@
+.Itineraries__container{
+    display: flex;
+    /* align-items: center; */
+    /* justify-content: center; */
+    flex-direction: column;
+}
+.Itineraries__nav{
+    display: flex;
+    flex-direction: row;
+}
+.Itineraries__nav h3, button{
+    margin: 0 2px;
+}

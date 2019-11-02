@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
+import {Link} from 'react-router-dom'
 import { connect } from "react-redux";
 import {Loader} from '../components/Loader'
 import * as citiesActions from "../actions/citiesActions";
+import {City} from '../components/City'
 
 const Cities = props => {
   const [showShearch, setShowSearch] = useState(false);
@@ -40,7 +42,6 @@ const Cities = props => {
       <section className="search">
         <label>Search:</label>
         <input
-          onChangeDe
           onChange={handleChange}
           onKeyDown={handleEnter}
           placeholder="City..."
@@ -59,18 +60,18 @@ const Cities = props => {
           props.filterCities.length === 0 ? (
             <h3>No results were found</h3>
           ) : (
-            props.filterCities.map((el, index) => (
-              <div className="City" key={index}>
-                <h5> {el.country} </h5> <p> {el.city_name} </p>
-              </div>
+            props.filterCities.map((el) => (
+              <Link to={`/cities/${el.city_name}/${el._id}`} key={el._id}>
+                <City city={el} />
+              </Link>
             ))
           )
         ) : (
           showShearch === false &&
-          props.cities.map((el, index) => (
-            <div className="City" key={index}>
-              <h5> {el.country} </h5> <p> {el.city_name} </p>
-            </div>
+          props.cities.map((el) => (
+            <Link to={`/cities/${el.city_name}/${el._id}`} key={el._id}>
+                <City city={el} />
+              </Link>
           ))
         )}
       </section>
