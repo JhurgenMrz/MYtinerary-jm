@@ -1,19 +1,15 @@
 .activities_header{
-    height: 150px;
-    position: relative;
+    height: auto;
+    margin-top: 30px;
 }
 .activities{
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: auto;
+    margin-bottom: 15px;
 }
 .activities_header img{
     width: 100%;
-    position: absolute;
-    top: -15px;
+    position: relative;
+    top: 10px
 }

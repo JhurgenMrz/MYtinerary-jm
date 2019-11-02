@@ -13,9 +13,8 @@ import { NotFound } from "./pages/NotFound";
 export const App = () => {
   return (
     <BrowserRouter>
-      <div className="app">
+      
         <Nav session={false} />
-        <Activities />
         <Switch>
           <Route exact path="/" component={LandingPage} />
           <Route exact path="/cities" component={Cities} />
@@ -23,7 +22,7 @@ export const App = () => {
           <Route exact path="/sign-up" component={SignUp} />
           <Route component={NotFound} />
         </Switch>
-      </div>
+      
     </BrowserRouter>
   );
 };

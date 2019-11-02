@@ -6,11 +6,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 2px;
+    margin: 0 auto;
+    margin-bottom: 5px;
+    /* padding-bottom: 3px; */
     background-position: center center;
     object-fit: cover;
     background-size: cover;
-    border-radius: 7px;
+    border-radius: 3px;
 }
 
 .CardImg h5 {

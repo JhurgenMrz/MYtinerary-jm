@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
+import {Loader} from '../components/Loader'
 import * as citiesActions from "../actions/citiesActions";
 
 const Cities = props => {
@@ -46,13 +47,15 @@ const Cities = props => {
           value={props.word.toUpperCase()}
         ></input>
       </section>
-      {loader && <h3>Cargando...</h3>}
+      {loader && <Loader/>}
+      {props.loading ? (
+          <Loader/>
+        ) : props.error ?
+          <h3>{props.error}</h3> : ''
+        }
       <section className="Cities">
-        {props.loading ? (
-          <h3>Cargando...</h3>
-        ) : props.error ? (
-          <h3>{props.error}</h3>
-        ) : showShearch === true ? (
+        
+        { showShearch === true ? (
           props.filterCities.length === 0 ? (
             <h3>No results were found</h3>
           ) : (

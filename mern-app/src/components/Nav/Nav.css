@@ -2,7 +2,7 @@
     position: fixed;
     top: 0;
     display: flex;
-    max-width: 480px;
+    max-width: 500px;
     width: 100%;
     height: 60px;
     justify-content: space-between;
@@ -18,13 +18,17 @@
     color: #fff
 }
 
-.nav-container img {
+.nav-container .UserImg {
     width: 43px;
     height: 43px;
     border-radius: 50%;
     object-fit: cover;
     overflow: hidden;
     margin: 10px;
+}
+.nav-container .logo{
+    width: auto;
+    height: 100%;
 }
 
 .UserInfo {
@@ -58,11 +62,13 @@
 
 .Menu {
     position: absolute;
-    background: rgb(28, 78, 172);
+    background: rgb(39, 102, 196);
     width: 60%;
     height: 100vh;
     right: 0;
     top: 60px;
+    transition: 500ms;
+
 }
 
 .Menu h4 {
@@ -74,6 +80,3 @@
     text-decoration: none;
 }
 
-.Menu.active {
-    right: -60%;
-}

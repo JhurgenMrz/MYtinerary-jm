@@ -1,10 +1,11 @@
 import React from 'react'
+import {NotFound as NotFoundComponent } from '../components/NotFound'
 import {Loader} from '../components/Loader'
 
 export const NotFound = ()=>{
     return (
-        <section style={{display:"flex", justifyContent:"center", alignItems:"center", flexDirection:"column"}}>
-            <h3>Not Found</h3>
+        <section>
+            <NotFoundComponent/>
             <Loader/>
 
         </section>

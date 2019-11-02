@@ -7,9 +7,19 @@ body {
   -moz-osx-font-smoothing: grayscale;
   max-width: 500px;
   width: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* border: 1px solid red; */
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+#root{
+  max-width: 500px;
+  width: 100%;
 }
