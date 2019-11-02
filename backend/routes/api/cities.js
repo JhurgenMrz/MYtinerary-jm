@@ -16,21 +16,24 @@ function citiesApi(app){
             message: 'Cities Listed'
         })
     })
+    router.post('/', async function(req, res){
+        const {body: city} = req
+        const cityCreated = await citiesServices.createCity(city)
+        res.status(201).json({
+            data: cityCreated,
+            message: 'City Created'
+        })
+    })
+    router.delete('/:CityId', async function(req, res){
+        const {CityId} = req.params
+        const cityDeleted = await citiesServices.deleteCity(CityId)
+        res.status(201).json({
+            data: cityDeleted,
+            message: 'City Deleted'
+        })
+    })
 
 }
 
-// router.post('/add',async (req,res)=>{
-//         const {city_name, country} = req.body
-//         console.log(city_name,country);
-//         const newCity = new City({country, city_name})
-//         await newCity.save()
-//         res.send(newCity);
-//     })
-
-// router.delete('/:idCity',async (req,res)=>{
-//     const {idCity} = req.params;
-//     await City.findByIdAndDelete(idCity)
-//     res.json({message:'City Deleted'});
-// })
 
 module.exports = citiesApi

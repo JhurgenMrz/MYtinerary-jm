@@ -4,7 +4,6 @@ const City = require("../models/City");
 
 class ItinerariesServices {
   async getItineraries(id) {
-    console.log(id);
     try {
       const itineraries = await Itinerary.find({
         city_id: id
@@ -14,6 +13,32 @@ class ItinerariesServices {
       return err;
     }
   }
+  async createItinerary(itinerary,cityId) {
+    console.log(itinerary,cityId);
+    const newItinerary={
+      city_id: cityId,
+      title: itinerary.title,
+      profilePic: itinerary.profilePic,
+      rating: itinerary.rating,
+      duration: itinerary.duration,
+      price: itinerary.price,
+      hastag: itinerary.hastag
+    }
+    try {
+      const itineraryCreated = await Itinerary.create(newItinerary)
+      return itineraryCreated || [];
+    } catch (err) {
+      return err;
+    }
+  };
+  async deleteItinerary(cityId) {
+    try {
+      const itineraryDeleted = await Itinerary.findByIdAndDelete(cityId)
+      return itineraryDeleted || [];
+    } catch (err) {
+      return err;
+    }
+  };
 }
 
 module.exports = ItinerariesServices;

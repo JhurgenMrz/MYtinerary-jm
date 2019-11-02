@@ -12,6 +12,26 @@ class CitiesServices {
         }
         
     }
+    async createCity(city){
+
+        try{
+            const cityCreated = await City.create(city)
+            return cityCreated || []
+        }catch (err){
+            return err
+        }
+        
+    }
+    async deleteCity(cityId){
+        // console.log(cityId)
+        try{
+            const cityCreated = await City.findByIdAndDelete(cityId)
+            return cityCreated || []
+        }catch (err){
+            return err
+        }
+        
+    }
 }
 
 
