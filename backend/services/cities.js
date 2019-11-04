@@ -1,4 +1,5 @@
 const City = require('../models/City');
+const Itinerary = require('../models/Itinerary')
 
 
 class CitiesServices {
@@ -23,10 +24,12 @@ class CitiesServices {
         
     }
     async deleteCity(cityId){
-        // console.log(cityId)
         try{
+            const itinerariesDeleted = await Itinerary.deleteMany({city_id: cityId})
+            // console.log(itinerariesDeleted)
             const cityCreated = await City.findByIdAndDelete(cityId)
-            return cityCreated || []
+            const CityAndItinerariesDeleted = [cityCreated,itinerariesDeleted]
+            return CityAndItinerariesDeleted || []
         }catch (err){
             return err
         }
