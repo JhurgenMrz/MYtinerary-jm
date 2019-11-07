@@ -1,7 +1,7 @@
 const { Schema, model } = require('mongoose');
 
-const City = new Schema({
-	country: {
+const Activity = new Schema({
+	activity_name: {
 		type: String,
 		required: true
 	},
@@ -27,4 +27,4 @@ const City = new Schema({
 	}
 });
 
-module.exports = model('cities', City);
+module.exports = model('activities', Activity);
