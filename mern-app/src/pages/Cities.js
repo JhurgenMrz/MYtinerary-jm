@@ -37,7 +37,7 @@ const Cities = props => {
   }, []);
 
   return (
-    <div style={{ margin: 20 }}>
+    <div>
       <h3> CITIES </h3>
       <section className="search">
         <label>Search:</label>
@@ -61,7 +61,7 @@ const Cities = props => {
             <h3>No results were found</h3>
           ) : (
             props.filterCities.map((el) => (
-              <Link to={`/cities/${el.city_name}/${el._id}`} key={el._id}>
+              <Link className="a__city" to={`/cities/${el.city_name}/${el._id}`} key={el._id}>
                 <City city={el} />
               </Link>
             ))
@@ -69,7 +69,7 @@ const Cities = props => {
         ) : (
           showShearch === false &&
           props.cities.map((el) => (
-            <Link to={`/cities/${el.city_name}/${el._id}`} key={el._id}>
+            <Link className="a__city" to={`/cities/${el.city_name}/${el._id}`} key={el._id}>
                 <City city={el} />
               </Link>
           ))

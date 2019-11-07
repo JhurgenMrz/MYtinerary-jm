@@ -14,7 +14,6 @@ class CitiesServices {
         
     }
     async createCity(city){
-
         try{
             const cityCreated = await City.create(city)
             return cityCreated || []
@@ -23,6 +22,20 @@ class CitiesServices {
         }
         
     }
+
+    async updateCity(cityId, city){
+
+        try{
+            const cityUpdated = await City.findByIdAndUpdate(cityId, city)
+            return cityUpdated || []
+        }catch (err){
+            return err
+        }
+        
+    }
+
+
+
     async deleteCity(cityId){
         try{
             const itinerariesDeleted = await Itinerary.deleteMany({city_id: cityId})

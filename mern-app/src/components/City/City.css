@@ -1,0 +1,60 @@
+/* Cities */
+
+.Cities {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+    align-items: center;
+    width: 100%;
+    /* padding: 0 2px; */
+    margin-top: 10px;
+	/* background: #e2e2e2; */
+	/* box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75); */
+	/* border: 1px solid rgb(124, 124, 124); */
+	/* border-radius: 10px; */
+}
+
+
+
+.City {
+    position: relative;
+	border-radius: 7px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	padding: 0  0;
+	margin: 3px 0;
+	height: 130px;
+	/* background: rgb(6, 0, 102); */
+	/* background: linear-gradient(90deg, rgba(6, 0, 102, 1) 0%, rgba(26, 26, 138, 1) 53%, rgba(16, 110, 129, 1) 94%); */
+	color: rgb(0, 0, 0);
+}
+
+.City img{
+    position: absolute;
+    margin: 0 auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.City h5,p{
+    background: white;
+    padding: 0 10px;
+    border-radius: 2px;
+    z-index: 2;
+}
+
+.City h5 {
+	text-transform: uppercase;
+	margin: 0;
+}
+
+.City p {
+	margin: 0;
+}

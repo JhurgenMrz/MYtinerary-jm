@@ -1,6 +1,10 @@
 .App{
 	margin-top: 70px;
 }
+a{
+	text-decoration: none;
+}
+
 .presentation {
 	font-family: Arial, Helvetica, sans-serif;
 	text-align: center;
@@ -24,52 +28,18 @@
 	height: 450px;
 }
 
-/* Cities */
-
-.Cities {
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	justify-content: space-between;
-	align-items: center;
-	/* margin: 0 15px; */
-	padding: 0 5px;
-	background: #e2e2e2;
-	box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.75);
-	/* border: 1px solid rgb(124, 124, 124); */
-	border-radius: 10px;
+.a__city{
+    width: 100%;
 }
 
-.City {
-	border-radius: 10px;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	width: 100px;
-	padding: 0 12px;
-	margin: 3px 0;
-	height: 50px;
-	background: rgb(6, 0, 102);
-	background: linear-gradient(90deg, rgba(6, 0, 102, 1) 0%, rgba(26, 26, 138, 1) 53%, rgba(16, 110, 129, 1) 94%);
-	color: #fff;
-}
 
-.City h5 {
-	text-transform: uppercase;
-	margin: 0;
-}
-
-.City p {
-	margin: 0;
-}
 
 .search {
 	font-family: Arial, Helvetica, sans-serif;
 	display: flex;
 	font-size: 18px;
 	flex-direction: column;
-	margin: 10px 0;
+	margin: 20px 0;
 }
 
 .search input {

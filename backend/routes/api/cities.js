@@ -24,10 +24,19 @@ function citiesApi(app){
             message: 'City Created'
         })
     })
+    router.put('/:CityId', async function(req, res){
+        const {CityId} = req.params
+        const {body: city} = req
+        const cityUpdated = await citiesServices.updateCity(CityId,city)
+        res.status(201).json({
+            data: cityUpdated,
+            message: 'City Updated'
+        })
+    })
     router.delete('/:CityId', async function(req, res){
         const {CityId} = req.params
         const cityDeleted = await citiesServices.deleteCity(CityId)
-        res.status(201).json({
+        res.status(200).json({
             data: cityDeleted,
             message: 'City Deleted'
         })

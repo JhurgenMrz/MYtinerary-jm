@@ -8,6 +8,22 @@ const City = new Schema({
   city_name: {
     type: String,
     required: true
+  },
+  rating:{
+    type: Number,
+    required: true
+  },
+  img_url: {
+    type: String,
+    required: true
+  },
+  themes: {
+    type: Array,
+    required: true
+  },
+  activities: {
+    type: Array,
+    required: true
   }
 });
 
