@@ -14,7 +14,7 @@
 
 .nav-container svg {
     font-size: 43px;
-    margin: 10px;
+    margin: 7px;
     color: #fff
 }
 
@@ -58,6 +58,14 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.logo__link{
+    width: 211px;
+}
+
+.Menu__icon{
+    width: 50px;
 }
 
 .Menu {

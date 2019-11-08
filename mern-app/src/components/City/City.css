@@ -26,10 +26,10 @@
 	width: 100%;
 	padding: 0  0;
 	margin: 3px 0;
-	height: 130px;
+	height: 180px;
 	/* background: rgb(6, 0, 102); */
 	/* background: linear-gradient(90deg, rgba(6, 0, 102, 1) 0%, rgba(26, 26, 138, 1) 53%, rgba(16, 110, 129, 1) 94%); */
-	color: rgb(0, 0, 0);
+	color: rgb(255, 255, 255);
 }
 
 .City img{
@@ -43,8 +43,8 @@
     height: 100%;
     object-fit: cover;
 }
-.City h5,p{
-    background: white;
+.City p{
+    background: rgba(161, 161, 161, 0.7);
     padding: 0 10px;
     border-radius: 2px;
     z-index: 2;
@@ -57,4 +57,5 @@
 
 .City p {
 	margin: 0;
+	font-size: 36px;
 }

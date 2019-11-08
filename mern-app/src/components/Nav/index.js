@@ -70,11 +70,11 @@ export const Nav = ({ session }) => {
           <FaUserCircle />
         )}
       </div>
-      <Link to="/">
+      <Link className="logo__link" to="/">
       <img className="logo" src={logo} alt="logo"/>
       </Link>
       <MdMenu onClick={() => setMenu(!menu)} />
-      <Menu show={menu} />
+      <Menu className="Menu__icon" show={menu} />
       <UserInfo show={show} sessionActive={session} />
     </nav>
   );

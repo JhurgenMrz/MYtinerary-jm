@@ -1,0 +1,45 @@
+.Itinerary__item{
+    width: 99%;
+    height: 120px;
+    border: 1px solid #000;
+    display: flex;
+    flex-direction: column;
+}
+.Itinerary__profile{
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    margin-top: 5px;
+}
+.Itinerary__profile img{
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.Itinerary__info{
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+}
+.Itinerary__info h4,p{
+    margin: 0;
+}
+
+.Itineary__data{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.Itineary__data p{
+    margin-right: 20px;
+    padding-right: 5px;
+}
+
+.Itinerary__activities{
+    width: 98%;
+    height: 98%;
+    background-color: rgb(202, 202, 202);
+    margin: 5px;
+    cursor: pointer;
+}
