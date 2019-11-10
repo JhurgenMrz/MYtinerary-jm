@@ -14,11 +14,9 @@ export const Menu = ({show}) => {
   const fadeMenu = useSpring({
     width: show ? 180 : 0,
     config: {
-      duration: 0.3
+      duration: .2
     }
   })
-  
-  console.log(fadeMenu.width.value)
 
   return (
     <animated.section className={`Menu`} style={fadeMenu} >
