@@ -1,4 +1,4 @@
-.Itinerary__item{
+.Itinerary__item {
     /* width: 99%; */
     border: 1px solid #000;
     display: flex;
@@ -6,42 +6,48 @@
     transition: 500ms;
     /* position: relative; */
 }
-.Itinerary__profile{
+
+.Itinerary__profile {
     width: 30%;
     display: flex;
     justify-content: center;
     margin-top: 5px;
 }
-.Itinerary__profile img{
+
+.Itinerary__profile img {
     width: 70px;
     height: 70px;
     border-radius: 50%;
     object-fit: cover;
 }
-.Itinerary__info{
+
+.Itinerary__info {
     display: flex;
     flex-direction: column;
     width: 60%;
     cursor: pointer;
 }
-.Itinerary__info h4,p{
+
+.Itinerary__info h4,
+p {
     margin: 0;
 }
 
-.Itineary__data{
+.Itineary__data {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
-.Itineary__data p{
+
+.Itineary__data p {
     /* margin-right: 10px; */
     /* padding-right: 5px; */
 }
 
-.Itinerary__activities{
+.Itinerary__activities {
     width: 100%;
     height: 0;
-    background: #e6e6e6;
+    background: #ffffff;
     /* border: 1px solid red; */
     display: flex;
     flex-direction: column;
@@ -51,24 +57,30 @@
     transition: 400ms;
 }
 
-.Itinerary__activities__slider{
+.Itinerary__activities__slider {
     display: flex;
+    align-items: center;
     max-width: 400px;
     width: 100%;
-    height: 160px;
+    height: 150px;
     scroll-snap-type: x proximity;
     overflow-x: scroll
 }
-.Itinerary__activities__slider div{
+
+.Itinerary__activities__slider::-webkit-scrollbar {
+    display: none;
+}
+
+.Itinerary__activities__slider div {
     scroll-snap-align: start;
 }
 
-.Itinerary__button{
+.Itinerary__button {
     /* position: absolute; */
     /* bottom: 0; */
     width: 98%;
     height: 30px;
-    background-color: rgb(85, 125, 236);
+    background-color: rgb(28, 78, 172);
     margin: 5px;
     border-radius: 7px;
     cursor: pointer;
