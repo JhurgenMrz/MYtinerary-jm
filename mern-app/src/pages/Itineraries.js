@@ -6,6 +6,7 @@ import * as citiesActions from "../actions/citiesActions";
 import * as itinerariesActions from "../actions/itinerariesActions";
 import { City } from "../components/City";
 import { Itinerary } from "../components/Itinerary";
+import { MdArrowBack } from "react-icons/md";
 const { getAllCities } = citiesActions;
 
 const { getItineraries } = itinerariesActions;
@@ -41,7 +42,7 @@ const Itineraries = props => {
       {citySelected.length === 0 ? "" : <City city={citySelected[0]} />}
       <section className="Itineraries__nav">
         <Link to="/cities">
-          <button>⬅</button>
+          <MdArrowBack style={{ fontSize: "35px", color: "#000" }} />
         </Link>
         <h3>Available MYtineraries</h3>
       </section>
