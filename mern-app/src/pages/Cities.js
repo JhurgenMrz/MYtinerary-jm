@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import {Loader} from '../components/Loader'
 import * as citiesActions from "../actions/citiesActions";
 import {City} from '../components/City'
+import '../styles/Cities.css'
 
 const Cities = props => {
   const [showShearch, setShowSearch] = useState(false);
@@ -37,10 +38,10 @@ const Cities = props => {
   }, []);
 
   return (
-    <div>
+    <div className="Cities__page">
       <h3> CITIES </h3>
       <section className="search">
-        <label>Search:</label>
+        <label>Filter our current cities</label>
         <input
           onChange={handleChange}
           onKeyDown={handleEnter}

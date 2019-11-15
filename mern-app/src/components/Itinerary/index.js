@@ -24,63 +24,10 @@ export const Itinerary = ({ itinerary }) => {
     setActivities(data.data);
   }
 
-  useEffect(async () => {
-    await fetchActivities();
-    console.log("Activities", activities);
+  useEffect( () => {
+    fetchActivities();
+    // console.log("Activities", activities);
   }, []);
-
-  const Activities = [
-    {
-      title: "Desayunar",
-      src:
-        "https://images.unsplash.com/photo-1535567465397-7523840f2ae9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=714&q=80"
-    },
-    {
-      title: "Correr",
-      src:
-        "https://images.unsplash.com/photo-1427384906349-30452365b5e8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=667&q=80"
-    },
-    {
-      title: "Almorzar",
-      src:
-        "https://images.unsplash.com/photo-1546793665-c74683f339c1?ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80"
-    },
-    {
-      title: "Remo",
-      src:
-        "https://images.unsplash.com/photo-1563215756-bf90fae48cee?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80"
-    },
-    {
-      title: "Paseo en Bicicleta",
-      src:
-        "https://images.unsplash.com/photo-1488401318902-f7feae66db20?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=779&q=80"
-    },
-    {
-      title: "Acampar",
-      src:
-        "https://images.unsplash.com/photo-1414016642750-7fdd78dc33d9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=749&q=80"
-    },
-    {
-      title: "Tiro con Arco",
-      src:
-        "https://images.unsplash.com/photo-1510925758641-869d353cecc7?ixlib=rb-1.2.1&auto=format&fit=crop&w=333&q=80"
-    },
-    {
-      title: "Tennis",
-      src:
-        "https://images.unsplash.com/photo-1485908953667-cf6d88997642?ixlib=rb-1.2.1&auto=format&fit=crop&w=720&q=80"
-    },
-    {
-      title: "Natación",
-      src:
-        "https://images.unsplash.com/photo-1530549387789-4c1017266635?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80"
-    },
-    {
-      title: "Caminata",
-      src:
-        "https://images.unsplash.com/photo-1467139701929-18c0d27a7516?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80"
-    }
-  ];
 
   const fadeContent = useSpring({
     display: showContentItinerary ? "flex" : "none",
@@ -125,15 +72,12 @@ export const Itinerary = ({ itinerary }) => {
         </div>
       </div>
       <animated.div className={`Itinerary__activities`} style={fadeContent}>
-        <p>Activities</p>
+        <h4>Activities</h4>
         <div className="Itinerary__activities__slider">
           {activities.map((el, index) => {
-            console.log(el);
             return <ActivityByIitinerary key={el._id} activity={el} />;
           })}
         </div>
-
-        <p>Comments</p>
         <Comments />
       </animated.div>
       <div

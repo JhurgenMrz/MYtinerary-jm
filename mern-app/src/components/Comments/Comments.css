@@ -1,0 +1,27 @@
+.Comments {
+  width: auto;
+  padding-left: 20px;
+}
+
+.Comments__input input {
+  width: 80%;
+  padding: 7px 10px;
+  border-radius: 10px;
+  border: none;
+  background-color: rgb(221, 221, 221);
+}
+
+.Comments__input {
+  display: flex;
+}
+.Comments__input svg{
+  cursor: pointer;
+}
+.Comments__container{
+  margin-left: 10px;
+  margin-bottom: 10px;
+}
+.Comments__container p{
+  margin: 3px 0;
+
+}

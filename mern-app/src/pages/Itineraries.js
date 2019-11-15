@@ -12,7 +12,7 @@ const { getAllCities } = citiesActions;
 const { getItineraries } = itinerariesActions;
 
 const Itineraries = props => {
-  console.log(props);
+  // console.log(props);
   const [citySelected, setCity] = useState([]);
   const cityId = props.match.params._id;
 
@@ -41,15 +41,13 @@ const Itineraries = props => {
     <div className="Itineraries">
       {citySelected.length === 0 ? "" : <City city={citySelected[0]} />}
       <section className="Itineraries__nav">
-        <Link to="/cities">
-          <MdArrowBack style={{ fontSize: "35px", color: "#000" }} />
-        </Link>
+        
+          <MdArrowBack style={{ fontSize: "35px", color: "#000" }} onClick={()=> props.history.goBack()} />
+        
         <h3>Available MYtineraries</h3>
       </section>
       <div className="Itineraries__container">
-        {props.itinerariesReducer.itineraries.map((el, index) => (
-          <Itinerary key={index} itinerary={el} />
-        ))}
+        {props.itinerariesReducer.itineraries.map(el => <Itinerary key={el._id} itinerary={el} /> )}
       </div>
     </div>
   );
