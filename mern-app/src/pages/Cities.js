@@ -4,6 +4,8 @@ import { connect } from "react-redux";
 import {Loader} from '../components/Loader'
 import * as citiesActions from "../actions/citiesActions";
 import {City} from '../components/City'
+import {Nav} from '../components/Nav'
+
 import '../styles/Cities.css'
 
 const Cities = props => {
@@ -38,6 +40,8 @@ const Cities = props => {
   }, []);
 
   return (
+    <>
+    <Nav/>
     <div className="Cities__page">
       <h3> CITIES </h3>
       <section className="search">
@@ -77,6 +81,7 @@ const Cities = props => {
         )}
       </section>
     </div>
+    </>
   );
 };
 

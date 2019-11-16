@@ -1,6 +1,8 @@
 .Register{
-  /* padding-top: 5px; */
-  
+
+  background: rgb(17,211,188);
+  background: linear-gradient(0deg, rgba(17,211,188,1) 0%, rgba(133,122,255,1) 100%);
+
 }
 .Register h2{
   text-align: center;
@@ -13,9 +15,9 @@
 
 .Register__img{
   margin: 0 auto;
-  border: 5px solid rgb(184, 184, 184);
-  width: 170px;
-  height: 170px;
+  border: 3px solid rgb(255, 255, 255);
+  width: 100px;
+  height: 100px;
   border-radius: 100%;
   position: relative;
 }
@@ -30,48 +32,55 @@
   left: 0;
   right: 0;
   margin:0 auto;
+  color: #fff;
   text-decoration: underline;
 }
 .Register__container form{
   width: 100%;
-  padding: 20px 20px 0 20px ;
+  padding: 20px 60px 20px 60px ;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
-.Register__form label{
-  font-size: 20px;
-  margin-bottom: 10px;
-  padding-top: 5px;
-}
+
 .Register__form input{
-  width: 65%;
+  width: 85%;
   margin-bottom: 10px;
   background-color: #fff;
-  border: 2px solid rgb(196, 196, 196);
+  /* border: 3px solid rgb(28, 78, 172); */
+  border: none;
   border-radius: 20px;
-  font-size: 30px;
-  padding:0 7px;
+  font-size: 24px;
+  padding:5px 15px;
+  color: rgb(28, 78, 172);
 }
 .Register__form select{
-  width: 70%;
-  margin: 0 10px 0 30px;
+  margin-bottom: 10px;
   border-radius: 20px;
-  padding: 0 7px;
+  border: 3px solid rgb(28, 78, 172);
+  padding: 2px 10px;
+  font-size: 20px;
+  color: rgb(28, 78, 172);
+
 }
-.Register__form input[type="checkbox"] {
+.Register__form__terms{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.Register__form__terms input[type="checkbox"] {
   width: 20px;
   height: 20px;
+  border-radius: 10px;
   margin: 0;
-  margin-top: 10px;
-  margin-left: 30px;
 }
-.Register__form p{
-  margin-top: 10px;
-  margin-bottom: 15px;
+.Register__form__terms p{
+  margin-top: 15px;
+  margin-left: 10px;
+  margin-bottom: 10px;
   font-size: 12px;
-  text-align: left;
-  width: 85%;
+  width: auto
 }
 .Register__form__button{
   margin: 0 auto;

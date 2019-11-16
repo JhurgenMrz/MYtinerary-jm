@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useSpring, animated } from 'react-spring'
-
 import { MdMenu } from "react-icons/md";
 import { FaUserCircle } from "react-icons/fa";
 import "./Nav.css";
 import me from "../../assets/me.jpg";
-import logo from '../../assets/MYitinerary.png'
+import logo from '../../assets/MYtinerarySVG.svg'
 import { SignBtn } from "../SignBtn";
+import classNames  from 'classnames'
 
 export const Menu = ({show}) => {
   
@@ -18,8 +18,10 @@ export const Menu = ({show}) => {
     }
   })
 
+  
+
   return (
-    <animated.section className={`Menu`} style={fadeMenu} >
+    <animated.section className={'Menu'} style={fadeMenu} >
       <Link to="/">
         <h4>Home</h4>
       </Link>
@@ -53,14 +55,21 @@ export const UserInfo = ({ sessionActive, show }) => {
     </section>
   );
 };
-export const Nav = ({ session }) => {
+
+
+export const Nav = ({ session, isLogin, isRegister }) => {
   const [show, setShow] = useState(true);
   const [menu, setMenu] = useState(false);
 
-  
+  const navClass = classNames(
+    'nav-container',{
+      isRegister,
+      isLogin
+    }
+  )
 
   return (
-    <nav className="nav-container">
+    <nav className={navClass}>
       <div onClick={() => setShow(!show)}>
         {session ? (
           <img className="Nav__user UserImg" src={me} alt="me" />

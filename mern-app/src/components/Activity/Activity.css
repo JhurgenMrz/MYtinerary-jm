@@ -1,6 +1,6 @@
 .activity{
     /* background-color: rgb(1, 52, 128); */
-    border: 3px solid rgb(11, 65, 182);
+    border: 3px solid rgb(255, 255, 255);
     border-radius: 50%;
     width: 60px;
     height: 60px;
@@ -15,6 +15,6 @@
 }
 .activity svg{
     position: absolute;
-    color: #6c90eb;
+    color: #acdaff;
     font-size: 40px;
 }

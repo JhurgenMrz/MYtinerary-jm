@@ -1,0 +1,72 @@
+.Login{
+    background: rgb(17,211,188);
+    background: linear-gradient(0deg, rgba(17,211,188,1) 0%, rgba(133,122,255,1) 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+}
+
+.Login__container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.Login__container>input{
+    width: 75%;
+    margin-bottom: 20px;
+    background-color: #fff;
+    /* border: 3px solid rgb(28, 78, 172); */
+    border: none;
+    border-radius: 20px;
+    font-size: 24px;
+    padding:5px 15px;
+    color: rgb(28, 78, 172);     
+}
+.Login__container>div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    margin-bottom: 15px;
+}
+.Login__container>div input{
+    margin: 0;
+    width: auto;
+}
+.Login__container button{
+    background-color: rgb(28, 78, 172);
+    border: none;
+    padding: 5px 25px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    color: #fff;
+    font-size: 24px;
+}
+
+
+.Login__button{
+    width: auto;
+    border: 2px solid rgb(146, 206, 255);
+    border-radius: 20px;
+    display: flex;
+    padding: 8px 10px;
+    margin: 7px 5px;
+    justify-content: space-evenly;
+    background-color: rgba(0, 0, 0, 0.050);
+}
+.Login__button p{
+    margin-left: 10px;
+}
+
+.Login__newAccount{
+    margin: 10px 0;
+    text-align: center;
+    padding: 0 40px;
+    margin-bottom: 30px;
+}
+.Login__newAccount H4{
+    text-decoration: underline;
+    cursor: pointer;
+}

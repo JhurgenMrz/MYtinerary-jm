@@ -1,4 +1,5 @@
 import React, { Fragment } from "react";
+import {Nav} from '../components/Nav'
 import { Start } from "../components/Start/index";
 import { CarouselImg } from "../components/CarouselImg";
 import {Activities} from '../components/Activities'
@@ -6,6 +7,7 @@ import {Activities} from '../components/Activities'
 export const LandingPage = () => {
   return (
     <Fragment>
+        <Nav/>
         <Activities />
       <p className="presentation">
         Find your perfect trip, designed by insiders who know and love their

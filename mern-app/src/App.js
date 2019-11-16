@@ -1,8 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-
 import './App.css';
-import { Nav } from './components/Nav/index';
 import { LandingPage } from './pages/LandingPage';
 import Cities from './pages/Cities';
 import Itineraries from './pages/Itineraries';
@@ -14,7 +12,6 @@ export const App = () => {
 	return (
 		<BrowserRouter>
 			<section className='App'>
-				<Nav session={false} />
 				<Switch>
 					<Route exact path='/' component={LandingPage} />
 					<Route exact path='/cities' component={Cities} />

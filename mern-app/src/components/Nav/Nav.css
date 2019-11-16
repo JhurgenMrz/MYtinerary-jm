@@ -6,10 +6,13 @@
     width: 100%;
     height: 60px;
     justify-content: space-between;
-    /* border: 1px solid red; */
-    background-color: rgb(28, 78, 172);
-    border-bottom: 1px solid #d5d5d5;
+    background-color: rgb(28,78,172);
+    /* border-bottom: 1px solid rgb(28, 78, 172); */
     z-index: 9;
+}
+
+.isRegister, .isLogin{
+    background-color:  rgba(133,122,255,1);
 }
 
 .nav-container svg {

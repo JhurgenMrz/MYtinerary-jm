@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
 import "../styles/Itineraries.css";
+import { Nav } from '../components/Nav'
 import * as citiesActions from "../actions/citiesActions";
 import * as itinerariesActions from "../actions/itinerariesActions";
 import { City } from "../components/City";
@@ -38,18 +38,21 @@ const Itineraries = props => {
   }, []);
 
   return (
-    <div className="Itineraries">
-      {citySelected.length === 0 ? "" : <City city={citySelected[0]} />}
-      <section className="Itineraries__nav">
-        
-          <MdArrowBack style={{ fontSize: "35px", color: "#000" }} onClick={()=> props.history.goBack()} />
-        
-        <h3>Available MYtineraries</h3>
-      </section>
-      <div className="Itineraries__container">
-        {props.itinerariesReducer.itineraries.map(el => <Itinerary key={el._id} itinerary={el} /> )}
+    <>
+      <Nav />
+      <div className="Itineraries">
+        {citySelected.length === 0 ? "" : <City city={citySelected[0]} />}
+        <section className="Itineraries__nav">
+
+          <MdArrowBack style={{ fontSize: "35px", color: "#000" }} onClick={() => props.history.goBack()} />
+
+          <h3>Available MYtineraries</h3>
+        </section>
+        <div className="Itineraries__container">
+          {props.itinerariesReducer.itineraries.map(el => <Itinerary key={el._id} itinerary={el} />)}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
