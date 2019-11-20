@@ -44,7 +44,7 @@ const Itineraries = props => {
         {citySelected.length === 0 ? "" : <City city={citySelected[0]} />}
         <section className="Itineraries__nav">
 
-          <MdArrowBack style={{ fontSize: "35px", color: "#000" }} onClick={() => props.history.goBack()} />
+          <MdArrowBack style={{ fontSize: "35px", color: "#fff" }} onClick={() => props.history.goBack()} />
 
           <h3>Available MYtineraries</h3>
         </section>

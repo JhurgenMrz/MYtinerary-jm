@@ -13,7 +13,8 @@ const Register = ()=>{
         first_name: '',
         last_name: '',
         country: '',
-        accept_terms: false
+        accept_terms: false,
+        profilePic: '',
     })
 
     const handleCheckbox = e => {
@@ -43,8 +44,11 @@ const Register = ()=>{
 
                 <form className="Register__form" onSubmit={handleSubmit}>
                     <div className="Register__img">
-                        <p>Add Photo with Gravatar</p>
-                        <img src={gravatar(Account.email)} />
+
+                        {
+                            !Account.profPicture ? <p>No Profile Photo</p> : <img src={Account.profPicture} />
+                        }
+                        
                     </div>
                     
                     <input 
@@ -86,6 +90,15 @@ const Register = ()=>{
                         type="text"
                         name="last_name"
                         placeholder="Last Name"
+                        required
+                        onChange={handleChange}
+
+                    />
+                    
+                    <input 
+                        type="text"
+                        name="profilePic"
+                        placeholder="Url Image Picture"
                         required
                         onChange={handleChange}
 

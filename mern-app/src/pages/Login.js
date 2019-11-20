@@ -1,29 +1,63 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { Nav } from '../components/Nav'
 import '../styles/Login.css'
 import { FaFacebookSquare, FaGoogle } from 'react-icons/fa'
 
 export const Login = (props) => {
+
+    const [Login, setLogin] = useState({
+        user_name: '',
+        password: '',
+        remember: false
+    })
+
+    const handleCheckbox = e => {
+        setLogin({
+            ...Login,
+            remember: !Login.remember
+        })
+    }
+
+    const handleChange = (e) => {
+        setLogin({
+            ...Login,
+            [e.target.name] : e.target.value
+        })
+    }
+
+    const handleSubmit = e => {
+        e.preventDefault()
+        console.log(Login)
+    }
+
     return <>
         <Nav isLogin />
         <div className="Login">
             <h2>Login</h2>
-            <div className="Login__container">
+            <form className="Login__container" onSubmit={handleSubmit}>
                 <input
                     type="text"
                     placeholder="User Name"
+                    name="user_name"
+                    onChange={handleChange}
                 />
                 <input
                     type="password"
                     placeholder="Password"
+                    name="password"
+                    onChange={handleChange}
                 />
                 <div>
-                <input type="checkbox" />
+                <input 
+                    type="checkbox" 
+                    name="remember"
+                    onChange={handleCheckbox}
+                />
                 <p>Remember me</p>
                 </div>
-                <button>Ok</button>
-            </div>
+                <button onSubmit={handleSubmit}>Ok</button>
+            </form>
             <div className="Login__button">
                 <FaFacebookSquare /> <p>Log in with Google</p>
             </div>

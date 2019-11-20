@@ -1,0 +1,44 @@
+const User = require("../models/User");
+const bcrypt = require("bcrypt");
+
+class UserService {
+  async getUsers() {
+    try {
+      const Users = await User.find();
+      return Users || [];
+    } catch (err) {
+      return err;
+    }
+	}
+	
+	async validationEmail({ user }){
+		const { email } = user;
+		return User.find({email: email})
+	}
+
+  async createUser({ user }) {
+    const { user_name, password, email } = user;
+
+    const hashedPassword = await bcrypt.hash(password, 10);
+    try {
+      const userCreated = await User.create({
+        user_name,
+        password: hashedPassword,
+        email
+      });
+      return userCreated || [];
+    } catch (err) {
+      return err;
+    }
+  }
+  async deleteUser({ userId }) {
+    try {
+      const userDeleted = await User.findByIdAndDelete(userId);
+      return userDeleted || [];
+    } catch (err) {
+      return err;
+    }
+  }
+}
+
+module.exports = UserService;

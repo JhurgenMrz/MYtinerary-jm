@@ -13,7 +13,6 @@ const User = new Schema({
         type: String,
         required: true,
         unique: true,
-        lowercase
     },
     first_name: {
         type: String
@@ -24,6 +23,9 @@ const User = new Schema({
     country: {
         type: String
     },
+    profilePic: {
+        type: String,
+    }
 })
 
-module.exports = model('Users',User)
+module.exports = model('users',User)

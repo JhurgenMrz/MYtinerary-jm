@@ -3,6 +3,7 @@ import {Nav} from '../components/Nav'
 import { Start } from "../components/Start/index";
 import { CarouselImg } from "../components/CarouselImg";
 import {Activities} from '../components/Activities'
+import '../styles/LandingPage.css'
 
 export const LandingPage = () => {
   return (

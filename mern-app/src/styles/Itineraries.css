@@ -7,6 +7,7 @@
 .Itineraries__nav{
     display: flex;
     flex-direction: row;
+    align-items: center;
 }
 .Itineraries__nav h3, button{
     margin: 0 2px;

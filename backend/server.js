@@ -8,6 +8,7 @@ require("./lib/mongodb");
 const citiesApi = require("./routes/api/cities");
 const itinerariesApi = require("./routes/api/itineraries");
 const activitiesApi = require("./routes/api/activities");
+const usersApi = require('./routes/api/users')
 
 //Middlewares
 app.use(cors());
@@ -17,6 +18,7 @@ app.use(bodyParser.json());
 citiesApi(app);
 itinerariesApi(app);
 activitiesApi(app);
+usersApi(app);
 
 const port = process.env.PORT || 5001;
 app.listen(port, () => console.log(`Server on Port http://localhost:${port}`));

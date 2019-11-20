@@ -1,20 +1,13 @@
 .App{
 	margin-top: 60px;	
 	background: rgb(28,78,172);
-	background: linear-gradient(180deg, rgba(28,78,172,1) 0%, rgba(0,96,196,1) 21%, rgba(0,151,255,1) 57%, rgba(155,214,255,1) 93%);
+	background: linear-gradient(180deg, rgba(28,78,172,1) 0%, rgba(0,96,196,1) 21%, rgba(0,151,255,1) 57%, rgba(41,171,226,1) 93%);
 	color: #fff;
 }
 a{
 	text-decoration: none;
 }
 
-.presentation {
-	font-family: Arial, Helvetica, sans-serif;
-	text-align: center;
-	margin: 10px 30px 0 30px;
-	padding: 0 20px;
-	font-size: 18px;
-}
 
 .Sign-container {
 	display: flex;

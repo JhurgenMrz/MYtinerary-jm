@@ -76,6 +76,7 @@ const Cities = props => {
           props.cities.map((el) => (
             <Link className="a__city" to={`/cities/${el.city_name}/${el._id}`} key={el._id}>
                 <City city={el} />
+                
               </Link>
           ))
         )}

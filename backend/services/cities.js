@@ -39,7 +39,6 @@ class CitiesServices {
 			const itinerariesDeleted = await Itinerary.deleteMany({
 				city_id: cityId
 			});
-			// console.log(itinerariesDeleted)
 			const cityCreated = await City.findByIdAndDelete(cityId);
 			const CityAndItinerariesDeleted = [cityCreated, itinerariesDeleted];
 			return CityAndItinerariesDeleted || [];
