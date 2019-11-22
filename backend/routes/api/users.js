@@ -15,27 +15,36 @@ function usersApi(app) {
       message: "users Listed"
     });
   });
-  router.post("/", async function(req, res) {
+
+  router.post("/sign-in", async function(req, res) {
+    const {
+      body: { email, password }
+    } = req;
+
+    const userRequired = await userService.verifyUser({ email, password });
+  });
+
+  router.post("/sign-up", async function(req, res) {
     const { body: user } = req;
-    const Exist = await userService.validationEmail({user})
-    console.log(Exist)
-    if(Exist.length === 0){
-      const userCreated = await userService.createUser({user});
+    const Exist = await userService.validationEmail({ user });
+    console.log(Exist);
+    if (Exist.length === 0) {
+      const userCreated = await userService.createUser({ user });
       //Funciona!
       res.status(201).json({
         data: userCreated,
         message: "user Created"
       });
-    }else{
+    } else {
       res.status(200).json({
         data: [],
-        message: 'user exist'
-      })
+        message: "user exist"
+      });
     }
   });
   router.delete("/:userId/", async function(req, res) {
     const { userId } = req.params;
-    const userDeleted = await userService.deleteUser({userId});
+    const userDeleted = await userService.deleteUser({ userId });
     //Funciona!
     res.status(200).json({
       data: userDeleted,

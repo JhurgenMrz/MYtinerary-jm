@@ -1,5 +1,7 @@
 const User = require("../models/User");
 const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
+const { config } = require("../config");
 
 class UserService {
   async getUsers() {
@@ -9,12 +11,37 @@ class UserService {
     } catch (err) {
       return err;
     }
-	}
-	
-	async validationEmail({ user }){
-		const { email } = user;
-		return User.find({email: email})
-	}
+  }
+
+  async verifyUser({ email, password }) {
+    const userRequired = await User.findOne({ email: email });
+    if (userRequired) {
+      const payload = {
+        id: userRequired._id,
+        name: userRequired.user_name,
+        email: userRequired.email
+      };
+      const match = await bcrypt.compare(password, userRequired.password);
+      if (match) {
+        jwt;
+      } else {
+        return;
+      }
+    }
+  }
+  async getUser({ email }) {
+    try {
+      const User = await User.findOne({ email: email });
+      return User || [];
+    } catch (err) {
+      return err;
+    }
+  }
+
+  async validationEmail({ user }) {
+    const { email } = user;
+    return User.find({ email: email });
+  }
 
   async createUser({ user }) {
     const { user_name, password, email } = user;

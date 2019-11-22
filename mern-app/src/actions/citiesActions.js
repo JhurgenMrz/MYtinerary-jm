@@ -7,28 +7,6 @@ import {
   CHANGE_INPUT
 } from "../types/citiesTypes";
 
-// export const getCity = (id) => async dispatch => {
-//   dispatch({
-//     type:LOADING
-//   })
-//   axios
-//     .get(`http://localhost:5001/api/cities/${id}`)
-//     .then(data => {
-//       const { data: dataCities } = data.data;
-//       dispatch({
-//         type: GET_ALL,
-//         payload: dataCities
-//       });
-//     })
-//     .catch(err => {
-//       console.log("Error:", err);
-//       dispatch({
-//         type: ERROR,
-//         payload: "Cities information not available"
-//       });
-//     });
-// }
-
 export const getAllCities = () => async dispatch => {
   dispatch({
     type: LOADING
