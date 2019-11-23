@@ -1,7 +1,7 @@
-const User = require("../models/User");
-const bcrypt = require("bcrypt");
-const jwt = require("jsonwebtoken");
-const { config } = require("../config");
+const User = require('../models/User');
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+const { config } = require('../config');
 
 class UserService {
   async getUsers() {
@@ -31,8 +31,9 @@ class UserService {
   }
   async getUser({ email }) {
     try {
-      const User = await User.findOne({ email: email });
-      return User || [];
+      console.log(email);
+      const UserSignIn = await User.findOne({ email });
+      return UserSignIn || [];
     } catch (err) {
       return err;
     }

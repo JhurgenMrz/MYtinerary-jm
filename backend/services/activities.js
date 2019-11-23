@@ -1,7 +1,7 @@
-const Itinerary = require("../models/Itinerary");
-const Activity = require("../models/Activity");
+const Itinerary = require('../models/Itinerary');
+const Activity = require('../models/Activity');
 
-class ActivitiesServices {
+class ActivitiesService {
   async getActivities(id) {
     try {
       const activities = await Activity.find({
@@ -36,4 +36,4 @@ class ActivitiesServices {
   }
 }
 
-module.exports = ActivitiesServices;
+module.exports = ActivitiesService;

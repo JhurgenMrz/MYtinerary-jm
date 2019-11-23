@@ -1,22 +1,22 @@
-const express = require("express");
+const express = require('express');
 
-const UserService = require("../../services/users");
+const UserService = require('../../services/users');
 
 function usersApi(app) {
   const router = express.Router();
   const userService = new UserService();
-  app.use("/api/users/", router);
+  app.use('/api/users', router);
 
-  router.get("/", async function(req, res) {
+  router.get('/', async function(req, res) {
     const users = await userService.getUsers();
     //Funciona!
     res.status(200).json({
       data: users,
-      message: "users Listed"
+      message: 'users Listed'
     });
   });
 
-  router.post("/sign-in", async function(req, res) {
+  router.post('/sign-in', async function(req, res) {
     const {
       body: { email, password }
     } = req;
@@ -24,7 +24,7 @@ function usersApi(app) {
     const userRequired = await userService.verifyUser({ email, password });
   });
 
-  router.post("/sign-up", async function(req, res) {
+  router.post('/sign-up', async function(req, res) {
     const { body: user } = req;
     const Exist = await userService.validationEmail({ user });
     console.log(Exist);
@@ -33,22 +33,22 @@ function usersApi(app) {
       //Funciona!
       res.status(201).json({
         data: userCreated,
-        message: "user Created"
+        message: 'user Created'
       });
     } else {
       res.status(200).json({
         data: [],
-        message: "user exist"
+        message: 'user exist'
       });
     }
   });
-  router.delete("/:userId/", async function(req, res) {
+  router.delete('/:userId/', async function(req, res) {
     const { userId } = req.params;
     const userDeleted = await userService.deleteUser({ userId });
     //Funciona!
     res.status(200).json({
       data: userDeleted,
-      message: "user Deleted"
+      message: 'user Deleted'
     });
   });
 }

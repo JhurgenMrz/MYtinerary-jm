@@ -1,5 +1,8 @@
-require('dotenv').config()
+require('dotenv').config();
 
-export const config = {
-    SecretKey = process.env.SECRET
-}
+const config = {
+  dev: !process.env.NODE_ENV === 'production',
+  SecretKey: process.env.SECRET
+};
+
+module.exports = { config };
