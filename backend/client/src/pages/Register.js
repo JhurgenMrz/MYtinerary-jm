@@ -45,10 +45,10 @@ const Register = props => {
         <div className="Register__container">
           <form className="Register__form" onSubmit={handleSubmit}>
             <div className="Register__img">
-              {!Account.profPicture ? (
+              {!Account.profilePic ? (
                 <p>No Profile Photo</p>
               ) : (
-                <img src={Account.profPicture} />
+                <img src={Account.profilePic} />
               )}
             </div>
 
@@ -80,7 +80,7 @@ const Register = props => {
               type="text"
               name="first_name"
               placeholder="First Name"
-              required
+              // required
               onChange={handleChange}
             />
 
@@ -88,7 +88,7 @@ const Register = props => {
               type="text"
               name="last_name"
               placeholder="Last Name"
-              required
+              // required
               onChange={handleChange}
             />
 
@@ -103,7 +103,7 @@ const Register = props => {
             <select
               placeholder="Select Country"
               name="country"
-              required
+              // required
               onChange={handleChange}
             >
               <option disabled>Select Country</option>
@@ -119,7 +119,7 @@ const Register = props => {
               <input
                 type="checkbox"
                 name="accept_terms"
-                required
+                // required
                 onClick={handleCheckbox}
                 defaultChecked={Account.accept_terms}
               />

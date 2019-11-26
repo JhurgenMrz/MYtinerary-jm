@@ -32,8 +32,17 @@ class UserService {
   async getUser({ email }) {
     try {
       console.log(email);
-      const UserSignIn = await User.findOne({ email });
-      return UserSignIn || [];
+      const UserSearched = await User.findOne({ email });
+      return UserSearched;
+    } catch (err) {
+      return err;
+    }
+  }
+
+  async getUserById({ idUser }) {
+    try {
+      const UserSearched = await User.findById(idUser).select("-password");
+      return UserSearched;
     } catch (err) {
       return err;
     }
@@ -54,7 +63,7 @@ class UserService {
         password: hashedPassword,
         email
       });
-      return userCreated || [];
+      return userCreated;
     } catch (err) {
       return err;
     }

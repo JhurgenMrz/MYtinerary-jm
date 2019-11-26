@@ -22,12 +22,12 @@ function authApi(app) {
       next(boom.unauthorized('ApiKey is Required'));
     }
 
-    passport.authenticate('basic', function(error, user) {
+    passport.authenticate('basic', function (error, user) {
       try {
         if (error || !user) {
           next(boom.unauthorized());
         }
-        req.login(user, { session: false }, async function(err) {
+        req.login(user, { session: false }, async function (err) {
           if (err) {
             next(err);
           }
@@ -36,32 +36,59 @@ function authApi(app) {
           if (!apiKey) {
             next(boom.unauthorized());
           }
-          //   console.log(user);
           const { _id: id, user_name: name, email } = user;
-
           const payload = {
             sub: id,
             name: name,
             email: email,
             scopes: apiKey.scopes
           };
-          //   console.log('payload', payload);
-
+          console.log(config.SecretKey)
           const token = jwt.sign(payload, config.SecretKey, {
             expiresIn: '20m'
           });
 
-          res.cookie('token', token, {
-            httpOnly: config.dev,
-            secure: config.dev
-          });
-          return res.status(200).json({ user: { id, name, email } });
+          // res.cookie('token', token, {
+          //   httpOnly: config.dev,
+          //   secure: config.dev
+          // });
+          return res.status(200).json({ user: { id, name, email }, token });
         });
       } catch (err) {
         next(err);
       }
     })(req, res, next);
   });
+
+
+  router.post('/sign-up', async function (req, res) {
+    const { body: user } = req
+    const { email, user_name, password } = req.body
+
+    if (!email || !user_name || !password) {
+      return res.status(400).json({ message: "Please, enter all fields" })
+    }
+
+    const Exist = await userService.getUser({ email });
+    console.log(Exist)
+    if (Exist) {
+      return res.status(400).json({ message: "User already exist" })
+    }
+
+    try {
+      const userCreated = await userService.createUser({ user });
+      res.status(201).json({
+        data: userCreated,
+        message: 'user Created'
+      });
+    } catch (err) {
+      res.status(401).json({ message: "An expected current error" })
+    }
+
+
+  });
+
+
 }
 
 module.exports = authApi;
