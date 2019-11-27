@@ -46,7 +46,9 @@ function authApi(app) {
       //   httpOnly: config.dev,
       //   secure: config.dev
       // });
-      return res.status(200).json({ user: { id, name, email }, token });
+      // return res.status(200).json({ user: { id, name, email }, token });
+
+      res.redirect(`/token/${token}`);
     }
   );
 

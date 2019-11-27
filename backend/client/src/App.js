@@ -9,18 +9,19 @@ import Register from './pages/Register';
 import { NotFound } from './pages/NotFound';
 
 export const App = () => {
-	return (
-		<BrowserRouter>
-			<section className='App'>
-				<Switch>
-					<Route exact path='/' component={LandingPage} />
-					<Route exact path='/cities' component={Cities} />
-					<Route exact path='/cities/:city_name/:_id' component={Itineraries} />
-					<Route exact path='/login' component={Login} />
-					<Route exact path='/register' component={Register} />
-					<Route component={NotFound} />
-				</Switch>
-			</section>
-		</BrowserRouter>
-	);
+  return (
+    <BrowserRouter>
+      <section className='App'>
+        <Switch>
+          <Route exact path='/' component={LandingPage} />
+          <Route exact path='/token/:token' component={LandingPage} />
+          <Route exact path='/cities' component={Cities} />
+          <Route exact path='/cities/:city_name/:_id' component={Itineraries} />
+          <Route exact path='/login' component={Login} />
+          <Route exact path='/register' component={Register} />
+          <Route component={NotFound} />
+        </Switch>
+      </section>
+    </BrowserRouter>
+  );
 };
