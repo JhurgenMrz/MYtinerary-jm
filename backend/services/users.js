@@ -13,6 +13,28 @@ class UserService {
     }
   }
 
+  async findOrCreate(profile) {
+    const { id, displayName: userName } = profile;
+    const email = profile.emails[0].value;
+    const avatarPicture = profile.photos[0].value;
+    const UserExist = await User.findOne({ email });
+    if (UserExist) {
+      return UserExist;
+    }
+    try {
+      const newUserWithGoogle = await User.create({
+        googleId: id,
+        email,
+        userName,
+        avatarPicture,
+        password: id
+      });
+      return newUserWithGoogle;
+    } catch (err) {
+      return err;
+    }
+  }
+
   async verifyUser({ email, password }) {
     const userRequired = await User.findOne({ email: email });
     if (userRequired) {
@@ -41,7 +63,7 @@ class UserService {
 
   async getUserById({ idUser }) {
     try {
-      const UserSearched = await User.findById(idUser).select("-password");
+      const UserSearched = await User.findById(idUser).select('-password');
       return UserSearched;
     } catch (err) {
       return err;

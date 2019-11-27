@@ -1,7 +1,7 @@
-const { Schema, model } = require("mongoose");
+const { Schema, model } = require('mongoose');
 
 const User = new Schema({
-  user_name: {
+  userName: {
     type: String,
     required: true
   },
@@ -15,18 +15,31 @@ const User = new Schema({
     unique: true,
     index: true
   },
-  first_name: {
+  firstName: {
     type: String
   },
-  last_name: {
+  lastName: {
     type: String
   },
   country: {
     type: String
   },
-  profilePic: {
-    type: String
+  avatarPicture: {
+    type: String,
+    default: null
+  },
+  favoriteItineraries: {
+    type: Array,
+    default: []
+  },
+  date: {
+    type: Date,
+    default: Date.now()
+  },
+  googleId: {
+    type: String,
+    default: null
   }
 });
 
-module.exports = model("users", User);
+module.exports = model('users', User);
