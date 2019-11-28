@@ -75,15 +75,12 @@ class UserService {
     return User.find({ email: email });
   }
 
-  async createUser({ user }) {
-    const { user_name, password, email } = user;
-
+  async createUser({ email, password, userName, avatarPicture, country, firstName, lastName }) {
     const hashedPassword = await bcrypt.hash(password, 10);
+    password = hashedPassword
     try {
       const userCreated = await User.create({
-        user_name,
-        password: hashedPassword,
-        email
+        email, password, userName, avatarPicture, country, firstName, lastName
       });
       return userCreated;
     } catch (err) {

@@ -1,5 +1,5 @@
 import React from 'react'
-import {Nav} from '../components/Nav'
+import Nav from '../components/Nav'
 import {NotFound as NotFoundComponent } from '../components/NotFound'
 import {Loader} from '../components/Loader'
 

@@ -1,11 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
-import { Nav } from "../components/Nav";
+import Nav from "../components/Nav";
 import "../styles/Register.css";
+import { MessageError } from '../components/MessageError'
 import { countries } from "../utils/countries.js";
-import * as userActions from "../actions/usersAction";
+import { register } from "../actions/authActions";
+import { returnErrors, clearErrors } from "../actions/errorActions";
 
 const Register = props => {
+  // const [useError, setError] = useState(props.error.message)
   const [Account, setAccount] = useState({
     user_name: "",
     password: "",
@@ -34,23 +37,38 @@ const Register = props => {
   const handleSubmit = e => {
     e.preventDefault();
     console.log(Account);
-    props.signUp(Account);
+
+    //Attempt to register
+    props.register(Account);
   };
+
+  useEffect(() => {
+    props.clearErrors()
+
+    return () => {
+      props.clearErrors()
+    }
+  }, [])
 
   return (
     <>
       <Nav isRegister session={false} />
       <div className="Register">
         <h2>Create Acount</h2>
+
         <div className="Register__container">
           <form className="Register__form" onSubmit={handleSubmit}>
             <div className="Register__img">
               {!Account.profilePic ? (
                 <p>No Profile Photo</p>
               ) : (
-                <img src={Account.profilePic} />
-              )}
+                  <img src={Account.profilePic} />
+                )}
             </div>
+
+            {
+              (Object.keys(props.error.message).length !== 0) ? <MessageError message={props.error.message} /> : null
+            }
 
             <input
               type="text"
@@ -138,4 +156,11 @@ const Register = props => {
   );
 };
 
-export default connect(null, userActions)(Register);
+const mapDispatchToProps = reducer => {
+  return {
+    user: reducer.user,
+    error: reducer.error
+  }
+}
+
+export default connect(mapDispatchToProps, { register, returnErrors, clearErrors })(Register);

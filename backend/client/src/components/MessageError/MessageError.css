@@ -1,0 +1,9 @@
+.MessageError {
+  border-radius: 10px;
+  margin: 0;
+  padding: 2px 8px;
+  color: rgb(221, 30, 30);
+  margin-bottom: 8px;
+  background-color: #fff;
+  font-weight: bold;
+}

@@ -34,34 +34,6 @@
     height: 100%;
 }
 
-.UserInfo {
-    position: absolute;
-    left: 0;
-    top: 60px;
-    padding: 10px;
-    width: auto;
-    height: auto;
-    background: rgb(28, 78, 172);
-    border-bottom-right-radius: 15px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    /* opacity: 1; */
-    /* transition: opacity 500ms ease-in, display 600ms ease; */
-}
-
-.UserInfo.active {
-    /* opacity: 0; */
-    display: none;
-}
-
-.UserInfo div {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
 
 .logo__link{
     width: 211px;

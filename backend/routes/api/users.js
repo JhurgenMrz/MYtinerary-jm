@@ -10,10 +10,17 @@ function usersApi(app) {
   const userService = new UserService();
   app.use('/api/users', router);
 
+  router.get('/user', passport.authenticate('jwt', { session: false }),
+    async (req, res) => {
+      const idUser = req.user._id
+      const user = await userService.getUserById(idUser)
+      res.json(user)
+    })
+
   router.get(
     '/',
     passport.authenticate('jwt', { session: false }),
-    async function(req, res) {
+    async function (req, res) {
       const users = await userService.getUsers();
       //Funciona!
       res.status(200).json({
@@ -23,7 +30,7 @@ function usersApi(app) {
     }
   );
 
-  router.get('/:idUser', authentication, async function(req, res) {
+  router.get('/:idUser', authentication, async function (req, res) {
     const { idUser } = req.params;
     const users = await userService.getUserById({ idUser });
     res.status(200).json({
@@ -32,7 +39,7 @@ function usersApi(app) {
     });
   });
 
-  router.delete('/:userId/', authentication, async function(req, res) {
+  router.delete('/:userId/', authentication, async function (req, res) {
     const { userId } = req.params;
     const userDeleted = await userService.deleteUser({ userId });
     //Funciona!

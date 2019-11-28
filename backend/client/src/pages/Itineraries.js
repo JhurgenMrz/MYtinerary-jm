@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import "../styles/Itineraries.css";
-import { Nav } from '../components/Nav'
+import Nav from '../components/Nav'
 import * as citiesActions from "../actions/citiesActions";
 import * as itinerariesActions from "../actions/itinerariesActions";
 import { City } from "../components/City";
@@ -17,7 +17,7 @@ const Itineraries = props => {
   const cityId = props.match.params._id;
 
   async function GetData() {
-    if (props.citiesReducer.cities.length === 0) {
+    if (props.cities.cities.length === 0) {
       await props.getAllCities();
     }
     await props.getItineraries(cityId);
@@ -25,9 +25,9 @@ const Itineraries = props => {
 
   useEffect(() => {
     GetData();
-    if (props.citiesReducer.cities.length) {
+    if (props.cities.cities.length) {
       setCity(
-        props.citiesReducer.cities.filter(city => {
+        props.cities.cities.filter(city => {
           if (city._id === cityId) {
             return city;
           }
@@ -49,15 +49,15 @@ const Itineraries = props => {
           <h3>Available MYtineraries</h3>
         </section>
         <div className="Itineraries__container">
-          {props.itinerariesReducer.itineraries.map(el => <Itinerary key={el._id} itinerary={el} />)}
+          {props.itineraries.itineraries.map(el => <Itinerary key={el._id} itinerary={el} />)}
         </div>
       </div>
     </>
   );
 };
 
-const mapStateToProps = ({ itinerariesReducer, citiesReducer }) => {
-  return { itinerariesReducer, citiesReducer };
+const mapStateToProps = ({ itineraries, cities }) => {
+  return { itineraries, cities };
 };
 
 const mapDispatchToProps = {

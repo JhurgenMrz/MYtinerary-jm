@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
+import { login } from '../actions/authActions'
 import { Link } from 'react-router-dom';
-import { Nav } from '../components/Nav';
+import Nav from '../components/Nav';
 import '../styles/Login.css';
 import { FaFacebookSquare, FaGoogle } from 'react-icons/fa';
+import { connect } from 'react-redux';
 
-export const Login = props => {
-  const [Login, setLogin] = useState({
+const Login = props => {
+  const [loginUser, setLogin] = useState({
     user_name: '',
     password: '',
     remember: false
@@ -13,21 +15,22 @@ export const Login = props => {
 
   const handleCheckbox = e => {
     setLogin({
-      ...Login,
+      ...loginUser,
       remember: !Login.remember
     });
   };
 
   const handleChange = e => {
     setLogin({
-      ...Login,
+      ...loginUser,
       [e.target.name]: e.target.value
     });
   };
 
   const handleSubmit = e => {
     e.preventDefault();
-    console.log(Login);
+    console.log(loginUser);
+    props.login(loginUser)
   };
 
   return (
@@ -79,3 +82,5 @@ export const Login = props => {
     </>
   );
 };
+
+export default connect(null, { login })(Login)

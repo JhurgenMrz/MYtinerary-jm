@@ -10,7 +10,7 @@ import reduxThunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
 import reducer from "./reducers";
 
-import { App } from "./App";
+import App from "./App";
 import "./index.css";
 
 const persistConfig = {
@@ -22,7 +22,8 @@ const persistedReducer = persistReducer(persistConfig, reducer);
 
 const store = createStore(
   persistedReducer,
-  {},
+  {
+  },
   composeWithDevTools(applyMiddleware(reduxThunk))
 );
 
