@@ -20,7 +20,7 @@ function authApi(app) {
   router.get(
     '/google',
     passport.authenticate('google', { scope: ['profile', 'email'] }),
-    async (req, res, next) => { }
+    async (req, res, next) => {}
   );
 
   router.get(
@@ -48,7 +48,7 @@ function authApi(app) {
       // });
       // return res.status(200).json({ user: { id, name, email }, token });
 
-      res.redirect(`http://localhost:3000/token/${token}`);
+      res.redirect(`http://localhost:3000/loaduser/${token}`);
     }
   );
 
@@ -58,17 +58,17 @@ function authApi(app) {
       next(boom.unauthorized('ApiKey is Required'));
     }
 
-    passport.authenticate('basic', function (error, user) {
+    passport.authenticate('basic', function(error, user) {
       try {
         if (error || !user) {
           next(boom.unauthorized());
         }
-        req.login(user, { session: false }, async function (err) {
+        req.login(user, { session: false }, async function(err) {
           if (err) {
             next(err);
           }
-          const idUser = user._id
-          const userRequired = await userService.getUserById({idUser})
+          const idUser = user._id;
+          const userRequired = await userService.getUserById({ idUser });
           const apiKey = await apiKeysService.getApiKey({ token: apiKeyToken });
           //   console.log('apiKey', apiKey);
           if (!apiKey) {
@@ -90,7 +90,7 @@ function authApi(app) {
           //   httpOnly: config.dev,
           //   secure: config.dev
           // });
-          console.log({user: {userRequired}})
+          console.log({ user: { userRequired } });
           return res.status(200).json({ user: userRequired, token });
         });
       } catch (err) {
@@ -99,8 +99,17 @@ function authApi(app) {
     })(req, res, next);
   });
 
-  router.post('/sign-up', async function (req, res) {
-    const { email, password, userName, avatarPicture, country, apiKeyToken, firstName, lastName } = req.body
+  router.post('/sign-up', async function(req, res) {
+    const {
+      email,
+      password,
+      userName,
+      avatarPicture,
+      country,
+      apiKeyToken,
+      firstName,
+      lastName
+    } = req.body;
 
     if (!email || !userName || !password) {
       return res.status(400).json({ message: 'Please, enter all fields' });
@@ -113,13 +122,21 @@ function authApi(app) {
     const apiKey = await apiKeysService.getApiKey({ token: apiKeyToken });
     // console.log('apiKey', apiKey);
     if (!apiKey) {
-      res.status(401).json({ message: 'Api-Key-Token is required' })
+      res.status(401).json({ message: 'Api-Key-Token is required' });
     }
 
-
-    userService.createUser({ email, password, userName, avatarPicture, country, firstName, lastName })
+    userService
+      .createUser({
+        email,
+        password,
+        userName,
+        avatarPicture,
+        country,
+        firstName,
+        lastName
+      })
       .then(userCreated => {
-        console.log('User Created: ', userCreated)
+        console.log('User Created: ', userCreated);
         const { _id: id, userName: name, email, avatarPicture } = userCreated;
         const payload = {
           sub: id,
@@ -143,9 +160,7 @@ function authApi(app) {
       })
       .catch(err => {
         res.status(401).json({ message: 'Error al crear el usuario' });
-
-      })
-
+      });
   });
 }
 

@@ -1,5 +1,6 @@
-import axios from "axios";
-import { returnErrors, clearErrors } from "./errorActions";
+import axios from 'axios';
+import { returnErrors, clearErrors } from './errorActions';
+import jwt_decode from 'jwt-decode';
 
 import {
   AUTH_ERROR,
@@ -10,12 +11,11 @@ import {
   REGISTER_SUCCESS,
   USER_LOADED,
   USER_LOADING
-} from "../types/usersTypes";
+} from '../types/usersTypes';
 
 // const apiKeyToken = process.env.API_KEY_TOKEN_PUBLIC
 const apiKeyToken =
-  "c580c1bdbd3694e9657173416a1169760c25978f3d599c84f15342ba5bd1ba24";
-
+  'c580c1bdbd3694e9657173416a1169760c25978f3d599c84f15342ba5bd1ba24';
 
 export const tokenConfig = getState => {
   //Get token form localstorage
@@ -23,11 +23,11 @@ export const tokenConfig = getState => {
   //Headers
   const config = {
     headers: {
-      "Content-Type": "application/json"
+      'Content-Type': 'application/json'
     }
   };
   if (token) {
-    config.headers["Authentication"] = `bearer ${token}`;
+    config.headers['Authentication'] = `bearer ${token}`;
   }
 
   return config;
@@ -42,7 +42,7 @@ export const loadUser = () => async (dispatch, getState) => {
 
   try {
     const { data, status } = await axios.get(
-      "http://localhost/5001/api/users/user",
+      'http://localhost/5001/api/users/user',
       tokenConfig(getState)
     );
     dispatch({
@@ -70,7 +70,7 @@ export const register = ({
   //Header
   const config = {
     headers: {
-      "Content-Type": "application/json"
+      'Content-Type': 'application/json'
     }
   };
 
@@ -87,7 +87,7 @@ export const register = ({
   // console.log(apiKeyToken)
   try {
     const { data, status } = await axios.post(
-      "http://localhost:5001/api/auth/sign-up",
+      'http://localhost:5001/api/auth/sign-up',
       newUser,
       config
     );
@@ -96,8 +96,7 @@ export const register = ({
       payload: data.data
     });
 
-    window.location.href = '/'
-
+    window.location.href = '/';
   } catch (error) {
     dispatch({
       type: REGISTER_FAIL
@@ -106,14 +105,14 @@ export const register = ({
       returnErrors(
         error.response.data.message,
         error.response.status,
-        "REGISTER_FAIL"
+        'REGISTER_FAIL'
       )
     );
   }
 };
 
 // LOGIN USER
-export const login = ({user_name, password}) => async dispatch => {
+export const login = ({ user_name, password }) => async dispatch => {
   axios({
     url: 'http://localhost:5001/api/auth/sign-in',
     method: 'post',
@@ -124,36 +123,56 @@ export const login = ({user_name, password}) => async dispatch => {
       username: user_name,
       password
     },
-    data:{
-      "apiKeyToken": apiKeyToken
+    data: {
+      apiKeyToken: apiKeyToken
     }
-  }).then((data)=>{
-    console.log(data)
-    dispatch({
-      type: LOGIN_SUCCESS,
-      payload: data.data
-    })
-    // window.location.href = '/'
   })
-  .catch(err=>{
-    dispatch({
-      type: LOGIN_FAIL
+    .then(data => {
+      console.log(data);
+      dispatch({
+        type: LOGIN_SUCCESS,
+        payload: data.data
+      });
+      // window.location.href = '/'
     })
-    dispatch(
-      returnErrors(
-        err.response.data.message,
-        err.response.status,
-        "REGISTER_FAIL"
-      )
-    )
-  })
+    .catch(err => {
+      dispatch({
+        type: LOGIN_FAIL
+      });
+      dispatch(
+        returnErrors(
+          err.response.data.message,
+          err.response.status,
+          'REGISTER_FAIL'
+        )
+      );
+    });
+};
 
-}
+// LOAD USER WITH GOOGLE
+export const getUserWithGoogle = token => dispatch => {
+  axios({
+    url: 'http://localhost:5001/api/users/user-with-token',
+    method: 'get',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `bearer ${token}`
+    }
+  })
+    .then(({ data }) => {
+      const User = { user: data.data, token };
+      dispatch({
+        type: LOGIN_SUCCESS,
+        payload: User
+      });
+    })
+    .catch(err => console.log(err));
+};
 
 // LOGOUT USER
 export const logout = () => dispatch => {
-  console.log('Me tengo que ir!!')
+  console.log('Me tengo que ir!!');
   dispatch({
     type: LOGOUT_SUCCESS
   });
-}
+};

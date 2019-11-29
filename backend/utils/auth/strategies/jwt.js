@@ -11,12 +11,15 @@ obts.secretOrKey = config.SecretKey;
 
 module.exports = passport.use(
   new JwtStrategy(obts, (jwt_payload, done) => {
+    // console.log(jwt_payload);
     User.findById(jwt_payload.sub)
+      .select('-password')
       .then(user => {
-        if (user) {
-          return done(null, user);
-        }
-        return done(null, false);
+        // if (user) {
+        // }
+        console.log('User', user);
+        return done(null, user);
+        // return done(null, false);
       })
       .catch(err => console.log(err));
   })

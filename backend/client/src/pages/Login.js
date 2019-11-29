@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { login } from '../actions/authActions'
+import { login } from '../actions/authActions';
 import { Link } from 'react-router-dom';
 import Nav from '../components/Nav';
 import '../styles/Login.css';
@@ -30,7 +30,7 @@ const Login = props => {
   const handleSubmit = e => {
     e.preventDefault();
     console.log(loginUser);
-    props.login(loginUser)
+    props.login(loginUser);
   };
 
   return (
@@ -83,4 +83,4 @@ const Login = props => {
   );
 };
 
-export default connect(null, { login })(Login)
+export default connect(null, { login })(Login);
