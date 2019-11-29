@@ -17,10 +17,10 @@ module.exports = passport.use(
       .then(user => {
         // if (user) {
         // }
-        console.log('User', user);
+        // console.log('User', user);
         return done(null, user);
         // return done(null, false);
       })
-      .catch(err => console.log(err));
+      .catch(err => done(err,null));
   })
 );

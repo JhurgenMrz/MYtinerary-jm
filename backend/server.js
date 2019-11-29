@@ -10,6 +10,7 @@ const itinerariesApi = require('./routes/api/itineraries');
 const activitiesApi = require('./routes/api/activities');
 const usersApi = require('./routes/api/users');
 const authApi = require('./routes/api/auth');
+const userItineraries = require('./routes/api/userItineraries');
 const passport = require('passport');
 
 //Middlewares
@@ -23,6 +24,7 @@ itinerariesApi(app);
 activitiesApi(app);
 usersApi(app);
 authApi(app);
+userItineraries(app)
 
 const port = process.env.PORT || 5001;
 app.listen(port, () => console.log(`Server on Port http://localhost:${port}`));
