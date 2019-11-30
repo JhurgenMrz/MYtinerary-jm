@@ -37,6 +37,7 @@ function userItineraries(app) {
     //   console.log(idUser,idItineary)
       const userItinearies = await userItineraries.postFavorite(idUser, idItineary);
       //Funciona!
+      console.log(userItinearies)
       res.status(200).json({
         data: userItinearies,
         message: "itinearies Listed"
