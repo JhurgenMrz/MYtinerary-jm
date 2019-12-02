@@ -16,7 +16,6 @@ const UserInfo = props => {
     <section className={`UserInfo ${active}`}>
       {sessionActive ? (
         <>
-          <button onClick={()=>props.logout()}>Logout</button>
           <SignBtn account="logout" />
         </>
       ) : (

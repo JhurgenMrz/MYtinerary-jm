@@ -11,6 +11,11 @@ const Itinerary = new Schema({
     type: String,
     required: true
   },
+  userName: {
+    type: String,
+    required: true,
+    ref: 'users'
+  },
   profilePic: {
     type: String,
     required: true

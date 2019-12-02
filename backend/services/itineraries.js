@@ -17,12 +17,7 @@ class ItinerariesService {
     console.log(itinerary, cityId);
     const newItinerary = {
       city_id: cityId,
-      title: itinerary.title,
-      profilePic: itinerary.profilePic,
-      rating: itinerary.rating,
-      duration: itinerary.duration,
-      price: itinerary.price,
-      hastag: itinerary.hastag
+      ...itinerary
     };
     try {
       const itineraryCreated = await Itinerary.create(newItinerary);

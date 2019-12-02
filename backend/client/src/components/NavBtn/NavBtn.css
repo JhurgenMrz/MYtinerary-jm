@@ -1,0 +1,21 @@
+.NavBtn__container {
+    position: fixed;
+    bottom: 0;
+    height: 60px;
+    max-width: 500px;
+    width: 100%;
+    padding: 5px 20px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    color: black;
+    box-sizing: border-box;
+    background-color: white;
+    z-index: 9;
+}
+
+.NavBtn__container>a>svg{
+    font-size: 30px;
+    color: black;
+
+}

@@ -5,6 +5,7 @@ import { Loader } from "../components/Loader";
 import * as citiesActions from "../actions/citiesActions";
 import { City } from "../components/City";
 import Nav from "../components/Nav";
+import { NavBtn } from "../components/NavBtn";
 
 import "../styles/Cities.css";
 
@@ -84,6 +85,7 @@ const Cities = props => {
           )}
         </section>
       </div>
+      <NavBtn isCities />
     </>
   );
 };

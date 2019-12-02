@@ -65,8 +65,8 @@ export const Itinerary = ({ itinerary }) => {
             <FaHeart style={{ color: "rgb(204, 3, 3)" }} />
           </div>
           <div>
-            {itinerary.hastag.map(el => (
-              <p>#{el}</p>
+            {itinerary.hastag.map((el, index) => (
+              <p key={index}>#{el}</p>
             ))}
           </div>
         </div>

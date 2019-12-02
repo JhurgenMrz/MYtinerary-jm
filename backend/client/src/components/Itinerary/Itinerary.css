@@ -58,7 +58,7 @@ p {
 .Itinerary__activities__slider {
     display: flex;
     align-items: center;
-    max-width: 400px;
+    max-width: 476px;
     width: 100%;
     height: 170px;
     scroll-snap-type: x proximity;
@@ -70,7 +70,7 @@ p {
 }
 
 .Itinerary__activities__slider div {
-    scroll-snap-align: start;
+    scroll-snap-align: center;
 }
 
 .Itinerary__button {

@@ -15,8 +15,7 @@ class ActivitiesService {
   async createActivity(activity, itineraryId) {
     const newActivity = {
       itinerary_id: itineraryId,
-      activity_name: activity.activity_name,
-      img_url: activity.img_url
+      ...activity
     };
     console.log(newActivity);
     try {

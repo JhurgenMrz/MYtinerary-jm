@@ -13,6 +13,16 @@ const Activity = new Schema({
   img_url: {
     type: String,
     required: true
+  },
+  address: {
+    type: String,
+    required: true
+  },
+  rating:{
+    type: Number
+  },
+  price:{
+    type: Number
   }
 });
 

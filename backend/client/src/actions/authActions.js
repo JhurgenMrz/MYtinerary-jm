@@ -1,6 +1,5 @@
 import axios from 'axios';
 import { returnErrors, clearErrors } from './errorActions';
-import jwt_decode from 'jwt-decode';
 
 import {
   AUTH_ERROR,

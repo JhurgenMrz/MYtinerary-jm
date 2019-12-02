@@ -9,6 +9,7 @@
     rgba(41, 171, 226, 1) 93%
   );
   color: #fff;
+  box-sizing: border-box;
   /* min-height: 100vh;
   display: flex;
   justify-content: center;

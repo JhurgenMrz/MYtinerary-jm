@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
 import "../styles/Itineraries.css";
-import Nav from '../components/Nav'
+import Nav from "../components/Nav";
 import * as citiesActions from "../actions/citiesActions";
 import * as itinerariesActions from "../actions/itinerariesActions";
 import { City } from "../components/City";
+import { NavBtn } from "../components/NavBtn";
 import { Itinerary } from "../components/Itinerary";
-import { MdArrowBack } from "react-icons/md";
 const { getAllCities } = citiesActions;
 
 const { getItineraries } = itinerariesActions;
@@ -43,15 +43,19 @@ const Itineraries = props => {
       <div className="Itineraries">
         {citySelected.length === 0 ? "" : <City city={citySelected[0]} />}
         <section className="Itineraries__nav">
-
-          <MdArrowBack style={{ fontSize: "35px", color: "#fff" }} onClick={() => props.history.goBack()} />
-
           <h3>Available MYtineraries</h3>
         </section>
         <div className="Itineraries__container">
-          {props.itineraries.itineraries.map(el => <Itinerary key={el._id} itinerary={el} />)}
+          {props.itineraries.itineraries.map(el =>{
+            console.log(el)
+            return (
+              <Itinerary key={el._id} itinerary={el} />
+            )
+          } 
+          )}
         </div>
       </div>
+      <NavBtn isItineraries />
     </>
   );
 };
