@@ -15,7 +15,6 @@ const INITIAL_STATE = {
   token: localStorage.getItem('token'),
   isAuthenticated: null,
   isLoading: false,
-  user: null
 };
 
 export default (state = INITIAL_STATE, action) => {

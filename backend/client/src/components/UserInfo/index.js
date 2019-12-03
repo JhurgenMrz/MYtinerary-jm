@@ -1,11 +1,12 @@
 import React from "react";
-import SignBtn from "../SignBtn";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import "./UserInfo.css";
 import { logout } from "../../actions/authActions";
 
 const UserInfo = props => {
   const { sessionActive, show } = props;
+  console.log(props)
   let active = "";
   if (show) {
     active = "active";
@@ -16,13 +17,17 @@ const UserInfo = props => {
     <section className={`UserInfo ${active}`}>
       {sessionActive ? (
         <>
-          <SignBtn account="logout" />
+          <h4>Logout</h4>
         </>
       ) : (
-        <div>
-          <SignBtn account="create" />
-          <SignBtn account="login" />
-        </div>
+        <>
+          <Link to="/register">
+            <h4>Create Account</h4>
+          </Link>
+          <Link to="login">
+            <h4>Login</h4>
+          </Link>
+        </>
       )}
     </section>
   );

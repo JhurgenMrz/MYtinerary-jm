@@ -2,27 +2,33 @@
     position: absolute;
     left: 0;
     top: 60px;
-    padding: 10px;
-    width: auto;
-    height: auto;
-    background: rgb(28, 78, 172);
+    width: 0;
+    min-height: 90px;
+    background: rgb(39, 102, 196);
     border-bottom-right-radius: 15px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    /* opacity: 1; */
-    /* transition: opacity 500ms ease-in, display 600ms ease; */
+    text-align: center;
+    opacity: 0;
+    transition: ease-in-out 500ms;
+}
+.UserInfo h4{
+    margin: 5px 2px;
+    color: white;
+
+}
+.UserInfo>a {
+    width: 0
+}
+
+.UserInfo.active>a {
+    width: 100%;
 }
 
 .UserInfo.active {
-    /* opacity: 0; */
-    display: none;
-}
-
-.UserInfo div {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    width: 180px;
+    opacity: 1;
+    text-align: center;
 }

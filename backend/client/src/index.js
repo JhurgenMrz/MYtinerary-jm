@@ -4,6 +4,7 @@ import ReactDOM from "react-dom";
 import { createStore, applyMiddleware } from "redux";
 import { persistStore, persistReducer } from "redux-persist";
 import { PersistGate } from "redux-persist/integration/react";
+import hardSet from 'redux-persist/lib/stateReconciler/hardSet'
 import storage from "redux-persist/lib/storage";
 import { Provider } from "react-redux";
 import reduxThunk from "redux-thunk";
@@ -15,15 +16,16 @@ import "./index.css";
 
 const persistConfig = {
   key: "root",
-  storage
+  storage,
+  stateReconciler: hardSet
 };
 
 const persistedReducer = persistReducer(persistConfig, reducer);
 
 const store = createStore(
-  persistedReducer,
-  {
-  },
+  // persistedReducer,
+  reducer,
+  {},
   composeWithDevTools(applyMiddleware(reduxThunk))
 );
 
@@ -31,9 +33,9 @@ const persistor = persistStore(store);
 
 ReactDOM.render(
   <Provider store={store}>
-    <PersistGate loading={null} persistor={persistor}>
+    {/* <PersistGate loading={null} persistor={persistor}> */}
       <App />
-    </PersistGate>
+    {/* </PersistGate> */}
   </Provider>,
   document.getElementById("root")
 );

@@ -1,17 +1,28 @@
 .Itinerary__item {
     width: 100%;
-    border-top: 1px solid #000;
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
     transition: 500ms;
     background-color: rgb(255, 255, 255);
     color: #000;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    height: auto;
+    position: relative;
 }
+.Itinerary__card{
+    display: flex;
+    padding: 10px 3px;
+}
+
 
 
 .Itinerary__profile {
     width: 30%;
     display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
     margin-top: 5px;
 }
@@ -21,6 +32,10 @@
     height: 70px;
     border-radius: 50%;
     object-fit: cover;
+}
+.Itinerary__profile p{
+    margin-top: 3px;
+    letter-spacing: 2px;
 }
 
 .Itinerary__info {
@@ -34,11 +49,29 @@
 p {
     margin: 0;
 }
+.Itinerary__hastag{
+    display: flex;
+    flex-wrap: wrap;
+}
+.Itinerary__hastag span{
+    color: rgb(28, 78, 172);
+    font-weight: bold;
+}
+.Itinerary__hastag p{
+    margin-left: 5px;
+    color: rgb(28, 78, 172);
+}
 
 .Itineary__data {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
+}
+.Itineary__data svg{
+    font-size: 20px;
+    position: relative;
+    bottom: 0;
 }
 
 .Itinerary__activities {
@@ -81,4 +114,6 @@ p {
     border-radius: 7px;
     cursor: pointer;
     font-size: 20px;
+    position: absolute;
+    bottom: 10px;
 }

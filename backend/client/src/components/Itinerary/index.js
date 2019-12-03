@@ -24,20 +24,20 @@ export const Itinerary = ({ itinerary }) => {
     setActivities(data.data);
   }
 
-  useEffect( () => {
+  useEffect(() => {
     fetchActivities();
     // console.log("Activities", activities);
   }, []);
 
   const fadeContent = useSpring({
     display: showContentItinerary ? "flex" : "none",
-    height: showContentItinerary ? 550 : 0,
+    height: showContentItinerary ? 450 : 0,
     config: {
       duration: 1
     }
   });
   const fadeItinerary = useSpring({
-    height: showContentItinerary ? 700 : 130,
+    height: showContentItinerary ? 600 : 160,
     config: {
       duration: 0.3
     }
@@ -45,11 +45,12 @@ export const Itinerary = ({ itinerary }) => {
 
   return (
     <animated.div className="Itinerary__item" style={fadeItinerary}>
-      <div
-        style={{ display: "flex", flexDirection: "row", marginBottom: "10px" }}
-      >
+      <div className="Itinerary__card">
         <div className="Itinerary__profile">
           <img src={itinerary.profilePic} alt="Profile" />
+          {
+            itinerary.userName && <p>{itinerary.userName}</p>
+          }
         </div>
         <div
           onClick={() => setShow(!showContentItinerary)}
@@ -57,16 +58,25 @@ export const Itinerary = ({ itinerary }) => {
         >
           <h4>{itinerary.title}</h4>
           <div className="Itineary__data">
-            <p>{(itinerary.duration / 60).toFixed(0)}h</p>
-            <FaRegClock />
-            <p>{itinerary.price}</p>
-            <FaMoneyBillAlt style={{ fontSize: 20, color: "green" }} />
-            <p>{`Likes  ${itinerary.rating}`}</p>{" "}
-            <FaHeart style={{ color: "rgb(204, 3, 3)" }} />
+            <p>
+              {(itinerary.duration / 60).toFixed(0)}h <FaRegClock />
+            </p>
+            <p>
+              ${itinerary.price}{" "}
+              <FaMoneyBillAlt style={{color: "green" }} />
+            </p>
+
+            <p>
+              {`Likes  ${itinerary.rating}`}{" "}
+              <FaHeart style={{ color: "rgb(204, 3, 3)" }} />
+            </p>
           </div>
-          <div>
+          <div className="Itinerary__hastag">
             {itinerary.hastag.map((el, index) => (
-              <p key={index}>#{el}</p>
+              <p key={index}>
+                <span>#</span>
+                {el}
+              </p>
             ))}
           </div>
         </div>
