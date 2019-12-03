@@ -36,7 +36,6 @@ const Login = props => {
   return (
     <>
       <Nav isLogin />
-      {/* <img /> */}
       <div className='Login'>
         <h2>Login</h2>
         <form className='Login__container' onSubmit={handleSubmit}>

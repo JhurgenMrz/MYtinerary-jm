@@ -13,7 +13,7 @@ import {
 const INITIAL_STATE = {
   user: {},
   token: localStorage.getItem('token'),
-  isAuthenticated: null,
+  isAuthenticated: false,
   isLoading: false,
 };
 
@@ -36,7 +36,8 @@ export default (state = INITIAL_STATE, action) => {
       localStorage.setItem('token', action.payload.token)
       return {
         ...state,
-        ...action.payload,
+        user: action.payload.user,
+        token: action.payload.token,
         isAuthenticated: true,
         isLoading: false,
       }

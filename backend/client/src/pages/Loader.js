@@ -13,7 +13,7 @@ const Loader = props => {
     props.getUserWithGoogle(token);
     setTimeout(() => {
       window.location.href = '/';
-    }, 300);
+    }, 10000);
   }, []);
 
   return (

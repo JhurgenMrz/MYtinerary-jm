@@ -160,6 +160,7 @@ export const getUserWithGoogle = token => dispatch => {
   })
     .then(({ data }) => {
       const User = { user: data.data, token };
+      console.log(User)
       dispatch({
         type: LOGIN_SUCCESS,
         payload: User
