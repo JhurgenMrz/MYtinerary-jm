@@ -1,7 +1,5 @@
 const User = require("../models/User");
 const Itineary = require("../models/Itinerary");
-const FavoritesItinearies = require("../models/FavoritesItinearies");
-const { config } = require("../config");
 
 class UserItinearies {
   async getFavorites(idUser) {
@@ -16,10 +14,10 @@ class UserItinearies {
   async postFavorite(idUser, idItinerary) {
     try {
       const UserWanted = await User.findById(idUser);
-      const ItinerarySelected = await Itineary.findById(idItinerary)
+      const ItinerarySelected = await Itineary.findById(idItinerary);
       const ItineraryUpdated = await Itineary.findOneAndUpdate(
         { _id: idItinerary },
-        { rating: ItinerarySelected.rating+1 },
+        { rating: ItinerarySelected.rating + 1 },
         { new: true }
       );
       console.log("itineary updated ", ItineraryUpdated);
@@ -41,13 +39,13 @@ class UserItinearies {
         //Return Itinerary liked
         if (el.idItinerary === idItinerary) return el;
       });
-    //   console.log(IdItinearyWanted);
+      //   console.log(IdItinearyWanted);
       if (IdItinearyWanted.length !== 0) {
         console.log("Ya le di Like");
-        return  {
-            UserItinearies: IdItinearyWanted.favoriteItineraries,
-            rating: ItineraryUpdated.rating
-          };
+        return {
+          UserItinearies: IdItinearyWanted.favoriteItineraries,
+          rating: ItineraryUpdated.rating
+        };
       } else {
         console.log("Recien le di Like");
         UserWanted.favoriteItineraries.push({ idItinerary });
@@ -57,9 +55,9 @@ class UserItinearies {
           { new: true }
         );
         return {
-            UserItinearies: UserUpdated.favoriteItineraries,
-            rating: ItineraryUpdated.rating
-          };
+          UserItinearies: UserUpdated.favoriteItineraries,
+          rating: ItineraryUpdated.rating
+        };
       }
     } catch (err) {
       return err;
@@ -69,10 +67,10 @@ class UserItinearies {
   async deleteFavItinerary(idUser, idItinerary) {
     try {
       const UserWanted = await User.findById(idUser);
-      const ItinerarySelected = await Itineary.findById(idItinerary)
+      const ItinerarySelected = await Itineary.findById(idItinerary);
       const ItineraryUpdated = await Itineary.findOneAndUpdate(
         { _id: idItinerary },
-        { rating: ItinerarySelected.rating-1 },
+        { rating: ItinerarySelected.rating - 1 },
         { new: true }
       );
       const itinerariesUpdated = await UserWanted.favoriteItineraries.filter(
@@ -85,7 +83,12 @@ class UserItinearies {
         { favoriteItineraries: itinerariesUpdated },
         { new: true }
       );
-      return {UserItinearies: userUpdated.favoriteItineraries, rating: ItineraryUpdated.rating} || [];
+      return (
+        {
+          UserItinearies: userUpdated.favoriteItineraries,
+          rating: ItineraryUpdated.rating
+        } || []
+      );
     } catch (err) {
       return err;
     }

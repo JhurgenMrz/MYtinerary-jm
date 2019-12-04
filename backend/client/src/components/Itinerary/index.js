@@ -1,20 +1,21 @@
 import React, { useState, useEffect } from "react";
 import {
-  FaHeart,
   FaAngleDown,
   FaAngleUp,
   FaMoneyBillAlt,
   FaRegClock
 } from "react-icons/fa";
+import { IoIosHeart, IoMdHeartEmpty } from "react-icons/io";
 import { useSpring, animated } from "react-spring";
 import "./Itinerary.css";
 import { ActivityByIitinerary } from "../ActivityByItinerary";
 import { Comments } from "../Comments";
 import axios from "axios";
 
-export const Itinerary = ({ itinerary }) => {
+export const Itinerary = ({ itinerary, isLiked }) => {
   const [showContentItinerary, setShow] = useState(false);
   const [activities, setActivities] = useState([]);
+  const [Liked, setLiked] = useState(isLiked);
 
   async function fetchActivities() {
     const { data } = await axios.get(
@@ -48,12 +49,10 @@ export const Itinerary = ({ itinerary }) => {
       <div className="Itinerary__card">
         <div className="Itinerary__profile">
           <img src={itinerary.profilePic} alt="Profile" />
-          {
-            itinerary.userName && <p>{itinerary.userName}</p>
-          }
+          {itinerary.userName && <p>{itinerary.userName}</p>}
         </div>
         <div
-          onClick={() => setShow(!showContentItinerary)}
+          //   onClick={() => setShow(!showContentItinerary)}
           className="Itinerary__info"
         >
           <h4>{itinerary.title}</h4>
@@ -62,14 +61,24 @@ export const Itinerary = ({ itinerary }) => {
               {(itinerary.duration / 60).toFixed(0)}h <FaRegClock />
             </p>
             <p>
-              ${itinerary.price}{" "}
-              <FaMoneyBillAlt style={{color: "green" }} />
+              ${itinerary.price} <FaMoneyBillAlt style={{ color: "green" }} />
             </p>
 
-            <p>
-              {`Likes  ${itinerary.rating}`}{" "}
-              <FaHeart style={{ color: "rgb(204, 3, 3)" }} />
-            </p>
+            <p>{`Likes  ${itinerary.rating}`} </p>
+            {Liked ? (
+              <IoIosHeart
+                style={{ color: "rgb(204, 3, 3)" }}
+                onClick={() => {
+                  setLiked(!Liked);
+                }}
+              />
+            ) : (
+              <IoMdHeartEmpty
+                onClick={() => {
+                  setLiked(!Liked);
+                }}
+              />
+            )}
           </div>
           <div className="Itinerary__hastag">
             {itinerary.hastag.map((el, index) => (
@@ -94,11 +103,19 @@ export const Itinerary = ({ itinerary }) => {
         onClick={() => setShow(!showContentItinerary)}
         className="Itinerary__button"
       >
-        <p style={{ textAlign: "center", color: "#fff" }}>
-          {!showContentItinerary ? <FaAngleDown /> : <FaAngleUp />}
-          {!showContentItinerary ? " View All " : " Close "}
-          {!showContentItinerary ? <FaAngleDown /> : <FaAngleUp />}
-        </p>
+        {!showContentItinerary ? (
+          <>
+            <FaAngleUp />
+            <p style={{ textAlign: "center", color: "#fff" }}>View All</p>
+            <FaAngleUp />
+          </>
+        ) : (
+          <>
+            <FaAngleDown />
+            <p style={{ textAlign: "center", color: "#fff" }}>Close</p>
+            <FaAngleDown />
+          </>
+        )}
       </div>
     </animated.div>
   );

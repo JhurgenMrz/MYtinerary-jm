@@ -1,65 +1,97 @@
 .nav-container {
-    position: fixed;
-    top: 0;
-    display: flex;
-    max-width: 500px;
-    width: 100%;
-    height: 60px;
-    justify-content: space-between;
-    background-color: rgb(28,78,172);
-    /* border-bottom: 1px solid rgb(28, 78, 172); */
-    z-index: 9;
+  position: fixed;
+  top: 0;
+  display: flex;
+  max-width: 500px;
+  width: 100%;
+  height: 60px;
+  justify-content: space-between;
+  background-color: rgb(28, 78, 172);
+  /* border-bottom: 1px solid rgb(28, 78, 172); */
+  z-index: 9;
 }
 
-.isRegister, .isLogin{
-    background-color:  rgba(133,122,255,1);
+.isRegister,
+.isLogin {
+  background-color: rgba(133, 122, 255, 1);
 }
 
 .nav-container svg {
-    font-size: 43px;
-    margin: 7px;
-    color: #fff
+  font-size: 43px;
+  margin: 7px;
+  color: #fff;
 }
 
 .nav-container .UserImg {
-    width: 43px;
-    height: 43px;
-    border-radius: 50%;
-    object-fit: cover;
-    overflow: hidden;
-    margin: 10px;
+  width: 43px;
+  height: 43px;
+  border-radius: 50%;
+  object-fit: cover;
+  overflow: hidden;
+  margin: 10px;
 }
-.nav-container .logo{
-    width: auto;
-    height: 100%;
-}
-
-
-.logo__link{
-    width: 211px;
+.nav-container .logo {
+  width: auto;
+  height: 100%;
 }
 
-.Menu__icon{
-    width: 50px;
+.logo__link {
+  width: 211px;
+}
+
+.Menu__icon {
+  width: 50px;
 }
 
 .Menu {
-    position: absolute;
-    background: rgb(39, 102, 196);
-    width: 60%;
-    height: 100vh;
-    right: 0;
-    top: 60px;
-    transition: 500ms;
-
+  position: absolute;
+  background: rgb(39, 102, 196);
+  width: 60%;
+  height: 100vh;
+  right: 0;
+  top: 60px;
+  transition: 500ms;
 }
 
 .Menu h4 {
-    text-align: center;
-    color: #fff;
+  text-align: center;
+  color: #fff;
 }
 
 .Menu a {
-    text-decoration: none;
+  text-decoration: none;
 }
 
+.UserInfo {
+  position: absolute;
+  left: 0;
+  top: 60px;
+  width: 0;
+  min-height: 90px;
+  background: rgb(39, 102, 196);
+  border-bottom-right-radius: 15px;
+  text-align: center;
+  opacity: 0;
+  transition: ease-in-out 500ms;
+}
+.UserInfo h4 {
+  margin: 5px 2px;
+  color: white;
+}
+.UserInfo > a {
+  width: 0;
+}
+
+.UserInfo.active > a {
+  width: 100%;
+}
+
+.UserInfo.active {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 180px;
+  opacity: 1;
+  text-align: center;
+}

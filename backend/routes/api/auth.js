@@ -1,32 +1,35 @@
-const express = require('express');
-const boom = require('@hapi/boom');
-const passport = require('passport');
-const jwt = require('jsonwebtoken');
-const { config } = require('../../config');
-const UserService = require('../../services/users');
-const ApiKeysService = require('../../services/apiKeys');
-const cookie = require('cookie-parser');
+const express = require("express");
+const boom = require("@hapi/boom");
+const passport = require("passport");
+const jwt = require("jsonwebtoken");
+const { config } = require("../../config");
+const UserService = require("../../services/users");
+const ApiKeysService = require("../../services/apiKeys");
+const {
+  newUserValidationRules,
+  validate
+} = require("../../utils/middlewares/validator");
 
-require('../../utils/auth/strategies/basic');
-require('../../utils/auth/strategies/google');
+require("../../utils/auth/strategies/basic");
+require("../../utils/auth/strategies/google");
 
 function authApi(app) {
   const router = express.Router();
-  app.use('/api/auth', router);
+  app.use("/api/auth", router);
 
   const userService = new UserService();
   const apiKeysService = new ApiKeysService();
 
   router.get(
-    '/google',
-    passport.authenticate('google', { scope: ['profile', 'email'] }),
+    "/google",
+    passport.authenticate("google", { scope: ["profile", "email"] }),
     async (req, res, next) => {}
   );
 
   router.get(
-    '/google/callback',
-    passport.authenticate('google', {
-      failureRedirect: '/login',
+    "/google/callback",
+    passport.authenticate("google", {
+      failureRedirect: "/login",
       session: false
     }),
     async (req, res, next) => {
@@ -40,7 +43,7 @@ function authApi(app) {
         avatarPicture
       };
       const token = jwt.sign(payload, config.SecretKey, {
-        expiresIn: '20m'
+        expiresIn: "20m"
       });
       // res.cookie('token', token, {
       //   httpOnly: config.dev,
@@ -52,13 +55,13 @@ function authApi(app) {
     }
   );
 
-  router.post('/sign-in', (req, res, next) => {
+  router.post("/sign-in", (req, res, next) => {
     const { apiKeyToken } = req.body;
     if (!apiKeyToken) {
-      next(boom.unauthorized('ApiKey is Required'));
+      next(boom.unauthorized("ApiKey is Required"));
     }
 
-    passport.authenticate('basic', function(error, user) {
+    passport.authenticate("basic", function(error, user) {
       try {
         if (error || !user) {
           next(boom.unauthorized());
@@ -84,7 +87,7 @@ function authApi(app) {
           };
           // console.log(config.SecretKey);
           const token = jwt.sign(payload, config.SecretKey, {
-            expiresIn: '20m'
+            expiresIn: "20m"
           });
           // res.cookie('token', token, {
           //   httpOnly: config.dev,
@@ -99,7 +102,10 @@ function authApi(app) {
     })(req, res, next);
   });
 
-  router.post('/sign-up', async function(req, res) {
+  router.post("/sign-up", newUserValidationRules(), validate, async function(
+    req,
+    res
+  ) {
     const {
       email,
       password,
@@ -112,17 +118,17 @@ function authApi(app) {
     } = req.body;
 
     if (!email || !userName || !password) {
-      return res.status(400).json({ message: 'Please, enter all fields' });
+      return res.status(400).json({ message: "Please, enter all fields" });
     }
     const Exist = await userService.getUser({ email });
     if (Exist) {
-      return res.status(400).json({ message: 'User already exist' });
+      return res.status(400).json({ message: "User already exist" });
     }
 
     const apiKey = await apiKeysService.getApiKey({ token: apiKeyToken });
     // console.log('apiKey', apiKey);
     if (!apiKey) {
-      res.status(401).json({ message: 'Api-Key-Token is required' });
+      res.status(401).json({ message: "Api-Key-Token is required" });
     }
 
     userService
@@ -136,7 +142,7 @@ function authApi(app) {
         lastName
       })
       .then(userCreated => {
-        console.log('User Created: ', userCreated);
+        console.log("User Created: ", userCreated);
         const { _id: id, userName: name, email, avatarPicture } = userCreated;
         const payload = {
           sub: id,
@@ -147,7 +153,7 @@ function authApi(app) {
         };
         // console.log(config.SecretKey);
         const token = jwt.sign(payload, config.SecretKey, {
-          expiresIn: '20m'
+          expiresIn: "20m"
         });
 
         res.status(201).json({
@@ -155,11 +161,11 @@ function authApi(app) {
             user: userCreated,
             token
           },
-          message: 'user Created'
+          message: "user Created"
         });
       })
       .catch(err => {
-        res.status(401).json({ message: 'Error al crear el usuario' });
+        res.status(401).json({ message: "Error al crear el usuario" });
       });
   });
 }

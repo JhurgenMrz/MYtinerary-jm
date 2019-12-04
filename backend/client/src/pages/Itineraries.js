@@ -7,12 +7,13 @@ import * as itinerariesActions from "../actions/itinerariesActions";
 import { City } from "../components/City";
 import { NavBtn } from "../components/NavBtn";
 import { Itinerary } from "../components/Itinerary";
+import { ELOOP } from "constants";
 const { getAllCities } = citiesActions;
 
 const { getItineraries } = itinerariesActions;
 
 const Itineraries = props => {
-  // console.log(props);
+  console.log(props);
   const [citySelected, setCity] = useState([]);
   const cityId = props.match.params._id;
 
@@ -46,13 +47,23 @@ const Itineraries = props => {
           <h3>Available MYtineraries</h3>
         </section>
         <div className="Itineraries__container">
-          {props.itineraries.itineraries.map(el =>{
-            console.log(el)
-            return (
-              <Itinerary key={el._id} itinerary={el} />
-            )
-          } 
-          )}
+          {props.itineraries.itineraries.map(el => {
+            let Liked = false;
+            if (!props.user._id) {
+              Liked = false;
+            } else {
+              let favs = props.user.favoriteItineraries.filter(favIti => {
+                if (favIti === el._id) return true;
+              });
+              console.log("favs", favs);
+              if (Object.keys(favs).length !== 0) {
+                Liked = true;
+              } else {
+                Liked = false;
+              }
+            }
+            return <Itinerary key={el._id} itinerary={el} isLiked={Liked} />;
+          })}
         </div>
       </div>
       <NavBtn isItineraries />
@@ -60,8 +71,8 @@ const Itineraries = props => {
   );
 };
 
-const mapStateToProps = ({ itineraries, cities }) => {
-  return { itineraries, cities };
+const mapStateToProps = ({ itineraries, cities, user }) => {
+  return { itineraries, cities, user: user.user };
 };
 
 const mapDispatchToProps = {

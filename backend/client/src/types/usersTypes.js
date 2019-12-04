@@ -6,3 +6,5 @@ export const LOGIN_FAIL = "user_login_fail";
 export const LOGOUT_SUCCESS = "user_logout_success";
 export const REGISTER_SUCCESS = "user_register_success";
 export const REGISTER_FAIL = "user_register_fail";
+export const USER_ITINERARY_FAV = "user_itinerary_fav";
+export const USER_ITINERARY_NO_FAV = "user_itinerary_no_fav";

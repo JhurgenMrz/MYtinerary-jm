@@ -8,7 +8,6 @@ import "./Nav.css";
 import logo from "../../assets/MYtinerarySVG.svg";
 import classNames from "classnames";
 import { logout } from "../../actions/authActions";
-import "../UserInfo/UserInfo.css";
 
 const Menu = ({ show }) => {
   const fadeMenu = useSpring({
@@ -44,12 +43,11 @@ export const Nav = props => {
     isLogin
   });
 
-  const UserInfo = ({isLogged, showUser}) => {
-
-    let classUserInfo = classNames(
-      'UserInfo',{
-        active: showUser
-    })
+  const UserInfo = props => {
+    const { isLogged, showUser, logoutFnc } = props;
+    let classUserInfo = classNames("UserInfo", {
+      active: showUser
+    });
 
     return (
       <section className={classUserInfo}>
@@ -57,6 +55,7 @@ export const Nav = props => {
           <h4
             onClick={() => {
               setShowUser(!showUser);
+              logoutFnc();
             }}
           >
             Logout
@@ -72,7 +71,7 @@ export const Nav = props => {
                 Create Account
               </h4>
             </Link>
-            <Link to="login">
+            <Link to="/login">
               <h4
                 onClick={() => {
                   setShowUser(!showUser);
@@ -105,7 +104,11 @@ export const Nav = props => {
           }}
         />
       )}
-      <UserInfo isLogged={isLogged} showUser={showUser} />
+      <UserInfo
+        isLogged={isLogged}
+        showUser={showUser}
+        logoutFnc={props.logout}
+      />
       <Link className="logo__link" to="/">
         <img className="logo" src={logo} alt="logo" />
       </Link>
