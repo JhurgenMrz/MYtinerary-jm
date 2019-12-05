@@ -7,13 +7,15 @@ import {
   CHANGE_INPUT
 } from "../types/citiesTypes";
 
+const API_URL = 'https://mytinerary-jm.herokuapp.com'
+
 export const getAllCities = () => async dispatch => {
   dispatch({
     type: LOADING
   });
 
   axios
-    .get("http://localhost:5001/api/cities")
+    .get(`${API_URL}/api/cities`)
     .then(data => {
       const { data: dataCities } = data.data;
       dispatch({

@@ -6,13 +6,16 @@ import {
   CLEAR_ITINERARIES
 } from "../types/itinerariesTypes";
 
+const API_URL = 'https://mytinerary-jm.herokuapp.com'
+
+
 export const getItineraries = CityId => async dispach => {
   dispach({
     type: LOADING
   });
 
   axios
-    .get(`http://localhost:5001/api/itineraries/${CityId}`)
+    .get(`${API_URL}/api/itineraries/${CityId}`)
     .then(data => {
       const { data: dataItineraries } = data.data;
       dispach({
@@ -35,27 +38,3 @@ export const clearItineraries = () => async dispatch => {
   })
 }
 
-// export const searchCities = word => async dispach => {
-//   dispach({
-//     type: LOADING
-//   });
-
-//   try {
-//     dispach({
-//       type: SEARCH_CITIES,
-//       payload: word
-//     });
-//   } catch (err) {
-//     dispach({
-//       type: ERROR,
-//       payload: "Erro, try later"
-//     });
-//   }
-// };
-
-// export const changeInput = word => async dispach => {
-//   dispach({
-//     type: CHANGE_INPUT,
-//     payload: word
-//   });
-// };

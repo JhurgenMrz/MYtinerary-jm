@@ -27,7 +27,7 @@ const Itinerary = props => {
 
   async function fetchActivities() {
     const { data } = await axios.get(
-      `http://localhost:5001/api/activities/${itinerary._id}`
+      `https://mytinerary-jm.herokuapp.com/api/activities/${itinerary._id}`
     );
     setActivities(data.data);
   }
