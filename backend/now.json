@@ -1,0 +1,22 @@
+{
+  "name": "mytinerary-jm",
+  "version": 2,
+  "builds": [
+    {
+      "src": "server.js",
+      "use": "@now/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/server.js"
+    }
+  ],
+  "env": {
+    "PASSWORD_DB": "@mytinerary-db-password",
+    "SECRET": "@mytinerary-jwt-secret",
+    "GOOGLE_ID_CLIENT": "@mytinerary-google-id-client",
+    "GOOGLE_SECRET_CLIENT": "@mytinerary-google-secret-client"
+  }
+}
