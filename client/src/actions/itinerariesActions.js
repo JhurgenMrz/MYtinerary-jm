@@ -6,8 +6,6 @@ import {
   CLEAR_ITINERARIES
 } from "../types/itinerariesTypes";
 
-const API_URL = 'https://mytinerary-jm.herokuapp.com'
-
 
 export const getItineraries = CityId => async dispach => {
   dispach({

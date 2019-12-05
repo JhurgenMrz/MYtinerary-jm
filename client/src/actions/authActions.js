@@ -39,7 +39,7 @@ export const loadUser = () => async (dispatch, getState) => {
   });
 
   try {
-    const { data, status } = await axios.get(
+    const { data } = await axios.get(
       `/api/users/user`,
       tokenConfig(getState)
     );
@@ -84,7 +84,7 @@ export const register = ({
   });
   // console.log(apiKeyToken)
   try {
-    const { data, status } = await axios.post(
+    const { data } = await axios.post(
       `/api/auth/sign-up`,
       newUser,
       config
@@ -159,7 +159,7 @@ export const getUserWithGoogle = token => dispatch => {
   })
     .then(({ data }) => {
       const User = { user: data.data, token };
-      console.log(User)
+      console.log('User loaded front', User)
       dispatch({
         type: LOGIN_SUCCESS,
         payload: User

@@ -25,7 +25,7 @@ const Cities = props => {
           setLoader(false);
           props.searchCities(wordSearched);
           setShowSearch(true);
-        }, 2000);
+        }, 600);
       }
     }
   };

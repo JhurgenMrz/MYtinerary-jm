@@ -12,7 +12,7 @@ const { getAllCities } = citiesActions;
 const { getItineraries, clearItineraries } = itinerariesActions;
 
 const Itineraries = props => {
-  console.log(props);
+  // console.log(props);
   const [citySelected, setCity] = useState([]);
   const cityId = props.match.params._id;
 
@@ -33,7 +33,7 @@ const Itineraries = props => {
           }
         })
       );
-      console.log(citySelected);
+      // console.log(citySelected);
     }
 
     return ()=>{
@@ -58,7 +58,7 @@ const Itineraries = props => {
               let favs = props.user.user.favoriteItineraries.filter(favIti => {
                 if (favIti === el._id) return true;
               });
-              console.log("favs", favs);
+              // console.log("favs", favs);
               if (Object.keys(favs).length !== 0) {
                 Liked = true;
               } else {

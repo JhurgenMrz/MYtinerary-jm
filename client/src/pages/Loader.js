@@ -12,8 +12,8 @@ const Loader = props => {
   useEffect(() => {
     props.getUserWithGoogle(token);
     setTimeout(() => {
-      window.location.href = "/";
-    }, 200);
+      props.history.push('/')
+    }, 300);
   }, []);
 
   return (

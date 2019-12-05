@@ -72,13 +72,13 @@
     animation: animate 2s ease-in-out infinite;
 }
 .Fcolor{
-    stroke: #0051ff;
+    stroke: #ADF4FF;
 }
 .Scolor{
-    stroke: #ff0037;
+    stroke: #61EAFF;
 }
 .Tcolor{
-    stroke: #ffc400;
+    stroke: #00BBCC;
 }
 
 @keyframes animate

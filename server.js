@@ -32,7 +32,7 @@ usersApi(app);
 authApi(app);
 userItineraries(app)
 // Render Index.html
-app.get('/', (req,res)=>{
+app.get('/*', (req,res)=>{
     res.status(200).sendFile(join(__dirname,'client','build','index.html'))
 })
 

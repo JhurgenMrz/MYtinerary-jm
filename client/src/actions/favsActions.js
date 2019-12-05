@@ -1,6 +1,5 @@
 import axios from "axios";
-import { USER_ITINERARY_FAV, USER_ITINERARY_NO_FAV } from '../types/usersTypes';
-import { UPDATE_FAV, UPDATE_NO_FAV } from '../types/itinerariesTypes'
+import { USER_ITINERARY_FAV } from '../types/usersTypes';
 
 export const tokenConfig = getState => {
   //Get token form localstorage

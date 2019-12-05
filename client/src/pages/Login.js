@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { login } from '../actions/authActions';
-import { Link } from 'react-router-dom';
 import Nav from '../components/Nav';
 import '../styles/Login.css';
 import { FaFacebookSquare, FaGoogle } from 'react-icons/fa';

@@ -16,7 +16,7 @@ import axios from "axios";
 import { Fav, NoFav } from "../../actions/favsActions";
 
 const Itinerary = props => {
-  console.log(props);
+  // console.log(props);
   const { itinerary, isLiked, isLogged } = props;
 
   const [ShowAuth, setShowAuth] = useState(false);
