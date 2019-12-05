@@ -16,13 +16,16 @@
   padding: 10px 3px;
 }
 
+.Itinerary__card > svg {
+  font-size: 35px;
+}
+
 .Itinerary__profile {
   width: 30%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: 5px;
 }
 
 .Itinerary__profile img {
@@ -41,6 +44,9 @@
   flex-direction: column;
   width: 60%;
   cursor: pointer;
+  outline-style: none;
+  box-shadow: none;
+  border-color: transparent;
 }
 
 .Itinerary__info h4,
@@ -118,4 +124,44 @@ p {
   font-size: 20px;
   position: absolute;
   bottom: 10px;
+}
+
+.AlertAuth {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.705);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  transition: all 500ms ease-in-out;
+  z-index: 1;
+}
+
+.AlertAuth .AlertAuth__btn {
+  background: rgb(176, 102, 254);
+  background: -moz-linear-gradient(
+    60deg,
+    rgba(176, 102, 254, 1) 0%,
+    rgba(99, 226, 255, 1) 100%
+  );
+  background: -webkit-linear-gradient(
+    60deg,
+    rgba(176, 102, 254, 1) 0%,
+    rgba(99, 226, 255, 1) 100%
+  );
+  background: linear-gradient(
+    60deg,
+    rgba(176, 102, 254, 1) 0%,
+    rgba(99, 226, 255, 1) 100%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#b066fe",endColorstr="#63e2ff",GradientType=1);
+  border: none;
+  padding: 5px 10px;
+  border-radius: 10px;
+  color: white;
+  font-size: 16px;
 }

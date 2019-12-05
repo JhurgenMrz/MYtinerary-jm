@@ -16,6 +16,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  
 }
 .Login__container > input {
   width: 75%;
@@ -27,6 +28,7 @@
   font-size: 24px;
   padding: 5px 15px;
   color: rgb(28, 78, 172);
+  outline: none;
 }
 .Login__container > div {
   display: flex;
@@ -38,6 +40,7 @@
 .Login__container > div input {
   margin: 0;
   width: auto;
+  outline: none;
 }
 .Login__container button {
   cursor: pointer;

@@ -34,11 +34,6 @@ export const Fav = idItinerary => async (dispatch, getState) => {
       type: USER_ITINERARY_FAV,
       payload: data.data.UserItinearies
     })
-    // //ITINERARY FAVS UPDATED
-    // dispatch({
-    //   type: UPDATE_FAV,
-    //   payload: data.data.rating
-    // })
   } catch (error) {
     console.log(error)
   }
@@ -60,17 +55,6 @@ export const NoFav = idItinerary => async (dispatch, getState) => {
       type: USER_ITINERARY_FAV,
       payload: data.data.UserItinearies
     })
-
-
-    // //ITINERARY FAVS UPDATED
-    // const payloadItinerary = {
-    //   newRating:  data.data.rating,
-    //   idItinerary
-    // }
-    // dispatch({
-    //   type: UPDATE_FAV,
-    //   payload: payloadItinerary
-    // })
   } catch (error) {
     console.log(error)
   }

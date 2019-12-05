@@ -65,7 +65,7 @@ const Itineraries = props => {
                 Liked = false;
               }
             }
-            return <Itinerary key={el._id} itinerary={el} isLiked={Liked} />;
+            return <Itinerary key={el._id} itinerary={el} isLiked={Liked} isLogged={props.user.isAuthenticated ? true : false} />;
           })}
         </div>
       </div>
