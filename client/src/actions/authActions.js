@@ -15,7 +15,6 @@ import {
 // const apiKeyToken = process.env.API_KEY_TOKEN_PUBLIC
 const apiKeyToken =
   'c580c1bdbd3694e9657173416a1169760c25978f3d599c84f15342ba5bd1ba24';
-const API_URL = 'https://mytinerary-jm.herokuapp.com'
 export const tokenConfig = getState => {
   //Get token form localstorage
   const token = getState().user.token;
@@ -41,7 +40,7 @@ export const loadUser = () => async (dispatch, getState) => {
 
   try {
     const { data, status } = await axios.get(
-      `${API_URL}/api/users/user`,
+      `/api/users/user`,
       tokenConfig(getState)
     );
     dispatch({
@@ -86,7 +85,7 @@ export const register = ({
   // console.log(apiKeyToken)
   try {
     const { data, status } = await axios.post(
-      `${API_URL}/api/auth/sign-up`,
+      `/api/auth/sign-up`,
       newUser,
       config
     );
@@ -113,7 +112,7 @@ export const register = ({
 // LOGIN USER
 export const login = ({ user_name, password }) => async dispatch => {
   axios({
-    url: `${API_URL}/api/auth/sign-in`,
+    url: `/api/auth/sign-in`,
     method: 'post',
     headers: {
       'Content-Type': 'application/json'
@@ -151,7 +150,7 @@ export const login = ({ user_name, password }) => async dispatch => {
 // LOAD USER WITH GOOGLE
 export const getUserWithGoogle = token => dispatch => {
   axios({
-    url: `${API_URL}/api/users/user-with-token`,
+    url: `/api/users/user-with-token`,
     method: 'get',
     headers: {
       'Content-Type': 'application/json',

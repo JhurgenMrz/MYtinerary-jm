@@ -60,7 +60,7 @@ const Login = props => {
         <div
           className='Login__button'
           onClick={() =>
-            (window.location.href = 'http://localhost:5001/api/auth/google')
+            (window.location.href = '/api/auth/google')
           }
         >
           <FaGoogle /> <p>Log in with Google</p>

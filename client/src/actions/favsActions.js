@@ -21,7 +21,7 @@ export const Fav = idItinerary => async (dispatch, getState) => {
 
   try {
     const {data, status} = await axios({
-      url: `http://localhost:5001/api/userItineraries/${idItinerary}`,
+      url: `/api/userItineraries/${idItinerary}`,
       method: "post",
       headers: {
         "Content-Type": 'application/json',
@@ -42,7 +42,7 @@ export const NoFav = idItinerary => async (dispatch, getState) => {
 
   try {
     const {data, status} = await axios({
-      url: `http://localhost:5001/api/userItineraries/${idItinerary}`,
+      url: `/api/userItineraries/${idItinerary}`,
       method: "delete",
       headers: {
         "Content-Type": 'application/json',

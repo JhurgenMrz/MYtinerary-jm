@@ -7,7 +7,6 @@ import {
   CHANGE_INPUT
 } from "../types/citiesTypes";
 
-const API_URL = 'https://mytinerary-jm.herokuapp.com'
 
 export const getAllCities = () => async dispatch => {
   dispatch({

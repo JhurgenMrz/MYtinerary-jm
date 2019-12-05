@@ -15,7 +15,7 @@ export const getItineraries = CityId => async dispach => {
   });
 
   axios
-    .get(`${API_URL}/api/itineraries/${CityId}`)
+    .get(`/api/itineraries/${CityId}`)
     .then(data => {
       const { data: dataItineraries } = data.data;
       dispach({
