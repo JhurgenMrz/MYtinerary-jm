@@ -93,7 +93,7 @@ function authApi(app) {
           //   httpOnly: config.dev,
           //   secure: config.dev
           // });
-          console.log({ user: { userRequired } });
+          // console.log({ user: { userRequired } });
           return res.status(200).json({ user: userRequired, token });
         });
       } catch (err) {

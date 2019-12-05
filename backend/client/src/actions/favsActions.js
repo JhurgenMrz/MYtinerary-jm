@@ -1,4 +1,6 @@
 import axios from "axios";
+import { USER_ITINERARY_FAV, USER_ITINERARY_NO_FAV } from '../types/usersTypes';
+import { UPDATE_FAV, UPDATE_NO_FAV } from '../types/itinerariesTypes'
 
 export const tokenConfig = getState => {
   //Get token form localstorage
@@ -10,14 +12,66 @@ export const tokenConfig = getState => {
     }
   };
   if (token) {
-    config.headers["Authentication"] = `bearer ${token}`;
+    config.headers["Authorization"] = `bearer ${token}`;
   }
   return config;
 };
 
-export const Fav = idItinerary => async dispatch => {
-  axios({
-    url: `http://localhost:5001/api/userItineraries/${idItinerary}`,
-    method: "post"
-  });
+export const Fav = idItinerary => async (dispatch, getState) => {
+
+  try {
+    const {data, status} = await axios({
+      url: `http://localhost:5001/api/userItineraries/${idItinerary}`,
+      method: "post",
+      headers: {
+        "Content-Type": 'application/json',
+        "Authorization": `bearer ${getState().user.token}`
+      }
+    });
+    console.log(data)
+    // USER ITINERARIES FAV UPDATED
+    dispatch({
+      type: USER_ITINERARY_FAV,
+      payload: data.data.UserItinearies
+    })
+    // //ITINERARY FAVS UPDATED
+    // dispatch({
+    //   type: UPDATE_FAV,
+    //   payload: data.data.rating
+    // })
+  } catch (error) {
+    console.log(error)
+  }
+};
+export const NoFav = idItinerary => async (dispatch, getState) => {
+
+  try {
+    const {data, status} = await axios({
+      url: `http://localhost:5001/api/userItineraries/${idItinerary}`,
+      method: "delete",
+      headers: {
+        "Content-Type": 'application/json',
+        "Authorization": `bearer ${getState().user.token}`
+      }
+    });
+    console.log(data)
+    //USER ITINERARIES FAV UPDATED
+    dispatch({
+      type: USER_ITINERARY_FAV,
+      payload: data.data.UserItinearies
+    })
+
+
+    // //ITINERARY FAVS UPDATED
+    // const payloadItinerary = {
+    //   newRating:  data.data.rating,
+    //   idItinerary
+    // }
+    // dispatch({
+    //   type: UPDATE_FAV,
+    //   payload: payloadItinerary
+    // })
+  } catch (error) {
+    console.log(error)
+  }
 };

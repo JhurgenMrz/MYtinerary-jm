@@ -155,7 +155,7 @@ export const getUserWithGoogle = token => dispatch => {
     method: 'get',
     headers: {
       'Content-Type': 'application/json',
-      Authorization: `bearer ${token}`
+      'Authorization': `bearer ${token}`
     }
   })
     .then(({ data }) => {

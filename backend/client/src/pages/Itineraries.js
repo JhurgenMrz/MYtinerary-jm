@@ -6,11 +6,10 @@ import * as citiesActions from "../actions/citiesActions";
 import * as itinerariesActions from "../actions/itinerariesActions";
 import { City } from "../components/City";
 import { NavBtn } from "../components/NavBtn";
-import { Itinerary } from "../components/Itinerary";
-import { ELOOP } from "constants";
+import Itinerary from "../components/Itinerary";
 const { getAllCities } = citiesActions;
 
-const { getItineraries } = itinerariesActions;
+const { getItineraries, clearItineraries } = itinerariesActions;
 
 const Itineraries = props => {
   console.log(props);
@@ -36,6 +35,10 @@ const Itineraries = props => {
       );
       console.log(citySelected);
     }
+
+    return ()=>{
+      props.clearItineraries()
+    }
   }, []);
 
   return (
@@ -49,10 +52,10 @@ const Itineraries = props => {
         <div className="Itineraries__container">
           {props.itineraries.itineraries.map(el => {
             let Liked = false;
-            if (!props.user._id) {
+            if (!props.user.isAuthenticated) {
               Liked = false;
             } else {
-              let favs = props.user.favoriteItineraries.filter(favIti => {
+              let favs = props.user.user.favoriteItineraries.filter(favIti => {
                 if (favIti === el._id) return true;
               });
               console.log("favs", favs);
@@ -72,12 +75,13 @@ const Itineraries = props => {
 };
 
 const mapStateToProps = ({ itineraries, cities, user }) => {
-  return { itineraries, cities, user: user.user };
+  return { itineraries, cities, user };
 };
 
 const mapDispatchToProps = {
   getAllCities,
-  getItineraries
+  getItineraries,
+  clearItineraries
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Itineraries);

@@ -13,16 +13,20 @@ class UserItinearies {
 
   async postFavorite(idUser, idItinerary) {
     try {
+      //Obtengo el Usuario deseado
       const UserWanted = await User.findById(idUser);
+      //Obtengo el Itinerario que le di Like
       const ItinerarySelected = await Itineary.findById(idItinerary);
+      //Actualizo el rating del Itinerario
       const ItineraryUpdated = await Itineary.findOneAndUpdate(
         { _id: idItinerary },
         { rating: ItinerarySelected.rating + 1 },
         { new: true }
       );
-      console.log("itineary updated ", ItineraryUpdated);
+      console.log("itineary updated ", ItineraryUpdated.rating);
+      //Si el Usuario nunca le dio Like a nada
       if (UserWanted.favoriteItineraries.length === 0) {
-        UserWanted.favoriteItineraries.push({ idItinerary });
+        UserWanted.favoriteItineraries.push(idItinerary);
         console.log(UserWanted);
         const UserUpdated = await User.findOneAndUpdate(
           { _id: idUser },
@@ -40,6 +44,7 @@ class UserItinearies {
         if (el.idItinerary === idItinerary) return el;
       });
       //   console.log(IdItinearyWanted);
+      //El Usuario ya le había dado Like al Iti 
       if (IdItinearyWanted.length !== 0) {
         console.log("Ya le di Like");
         return {
@@ -47,8 +52,9 @@ class UserItinearies {
           rating: ItineraryUpdated.rating
         };
       } else {
+        //Recién le va ha dar Like
         console.log("Recien le di Like");
-        UserWanted.favoriteItineraries.push({ idItinerary });
+        UserWanted.favoriteItineraries.push(idItinerary);
         const UserUpdated = await User.findByIdAndUpdate(
           idUser,
           { favoriteItineraries: UserWanted.favoriteItineraries },
@@ -75,7 +81,7 @@ class UserItinearies {
       );
       const itinerariesUpdated = await UserWanted.favoriteItineraries.filter(
         el => {
-          if (el.idItinerary !== idItinerary) return el;
+          if (el !== idItinerary) return el;
         }
       );
       const userUpdated = await User.findByIdAndUpdate(
@@ -87,7 +93,7 @@ class UserItinearies {
         {
           UserItinearies: userUpdated.favoriteItineraries,
           rating: ItineraryUpdated.rating
-        } || []
+        }
       );
     } catch (err) {
       return err;

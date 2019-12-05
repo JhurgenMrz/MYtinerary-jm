@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { connect } from "react-redux";
 import {
   FaAngleDown,
   FaAngleUp,
@@ -11,23 +12,26 @@ import "./Itinerary.css";
 import { ActivityByIitinerary } from "../ActivityByItinerary";
 import { Comments } from "../Comments";
 import axios from "axios";
+import { Fav, NoFav } from "../../actions/favsActions";
 
-export const Itinerary = ({ itinerary, isLiked }) => {
+const Itinerary = (props) => {
+  console.log(props)
+  const { itinerary, isLiked } = props
+
   const [showContentItinerary, setShow] = useState(false);
   const [activities, setActivities] = useState([]);
   const [Liked, setLiked] = useState(isLiked);
+  const [Rating, setRating] = useState(itinerary.rating);
 
   async function fetchActivities() {
     const { data } = await axios.get(
       `http://localhost:5001/api/activities/${itinerary._id}`
     );
-    // console.log(data.data);
     setActivities(data.data);
   }
 
   useEffect(() => {
     fetchActivities();
-    // console.log("Activities", activities);
   }, []);
 
   const fadeContent = useSpring({
@@ -64,18 +68,22 @@ export const Itinerary = ({ itinerary, isLiked }) => {
               ${itinerary.price} <FaMoneyBillAlt style={{ color: "green" }} />
             </p>
 
-            <p>{`Likes  ${itinerary.rating}`} </p>
+            <p>{`Likes  ${Rating}`} </p>
             {Liked ? (
               <IoIosHeart
                 style={{ color: "rgb(204, 3, 3)" }}
                 onClick={() => {
                   setLiked(!Liked);
+                  setRating(Rating - 1);
+                  props.NoFav(itinerary._id);
                 }}
               />
             ) : (
               <IoMdHeartEmpty
                 onClick={() => {
                   setLiked(!Liked);
+                  setRating(Rating + 1);
+                  props.Fav(itinerary._id);
                 }}
               />
             )}
@@ -120,3 +128,5 @@ export const Itinerary = ({ itinerary, isLiked }) => {
     </animated.div>
   );
 };
+
+export default connect(null, { Fav, NoFav })(Itinerary);

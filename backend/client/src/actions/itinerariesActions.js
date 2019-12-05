@@ -3,8 +3,7 @@ import {
   GET_ITINERARIES,
   LOADING,
   ERROR,
-  SEARCH_ITINERARIES,
-  CHANGE_INPUT
+  CLEAR_ITINERARIES
 } from "../types/itinerariesTypes";
 
 export const getItineraries = CityId => async dispach => {
@@ -29,6 +28,12 @@ export const getItineraries = CityId => async dispach => {
       });
     });
 };
+
+export const clearItineraries = () => async dispatch => {
+  dispatch({
+    type: CLEAR_ITINERARIES,
+  })
+}
 
 // export const searchCities = word => async dispach => {
 //   dispach({

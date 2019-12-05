@@ -8,11 +8,11 @@ import {
   USER_LOADED,
   USER_LOADING,
   USER_ITINERARY_FAV,
-  USER_ITINERARY_NO_FAV
 } from "../types/usersTypes";
 
 const INITIAL_STATE = {
-  user: {},
+  user: {
+  },
   token: localStorage.getItem("token"),
   isAuthenticated: false,
   isLoading: false
@@ -53,6 +53,14 @@ export default (state = INITIAL_STATE, action) => {
         user: null,
         isAuthenticated: false,
         isLoading: false
+      };
+    case USER_ITINERARY_FAV:
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          favoriteItineraries: action.payload
+        }
       };
     default:
       return state;

@@ -15,7 +15,7 @@ function userItineraries(app) {
     passport.authenticate("jwt", { session: false }),
     async (req, res) => {
       const user = req.user;
-      const idUser = user._id
+      const idUser = user._id;
       try {
         const userItineariesFav = await userItineraries.getFavorites(idUser);
         res.status(200).json({
@@ -32,16 +32,27 @@ function userItineraries(app) {
     "/:idItineary",
     passport.authenticate("jwt", { session: false }),
     async function(req, res) {
+      console.log(req)
       const { _id: idUser } = req.user;
       const { idItineary } = req.params;
-    //   console.log(idUser,idItineary)
-      const userItinearies = await userItineraries.postFavorite(idUser, idItineary);
-      //Funciona!
-      console.log(userItinearies)
-      res.status(200).json({
-        data: userItinearies,
-        message: "itinearies Listed"
-      });
+      //   console.log(idUser,idItineary)
+      try {
+        const userItinearies = await userItineraries.postFavorite(
+          idUser,
+          idItineary
+        );
+        //Funciona!
+        console.log(userItinearies);
+        res.status(200).json({
+          data: userItinearies,
+          message: "Liked Success"
+        });
+      } catch (error) {
+        res.status(404).json({
+          data: error.message,
+          message: "Liked Error"
+        });
+      }
     }
   );
 
@@ -49,14 +60,24 @@ function userItineraries(app) {
     "/:idItineary",
     passport.authenticate("jwt", { session: false }),
     async function(req, res) {
-        const { _id : idUser} = req.user
+      const { _id: idUser } = req.user;
       const { idItineary } = req.params;
-      const userItinearies = await userItineraries.deleteFavItinerary(idUser, idItineary);
-      //Funciona!
-      res.status(200).json({
-        data: userItinearies,
-        message: "itineary Deleted"
-      });
+      try {
+        const userItinearies = await userItineraries.deleteFavItinerary(
+          idUser,
+          idItineary
+        );
+        //Funciona!
+        res.status(200).json({
+          data: userItinearies,
+          message: "DisLiked Success"
+        });
+      } catch (err) {
+        res.status(200).json({
+          data: err.message,
+          message: "Liked Error"
+        });
+      }
     }
   );
 }

@@ -3,7 +3,8 @@ import {
 	LOADING,
 	ERROR,
 	SEARCH_ITINERARIES,
-	CHANGE_INPUT
+	UPDATE_FAV,
+	CLEAR_ITINERARIES
 } from '../types/itinerariesTypes';
 
 const INITIAL_STATE = {
@@ -23,6 +24,11 @@ export default (state = INITIAL_STATE, action) => {
 				loading: false,
 				error: ''
 			};
+		case CLEAR_ITINERARIES: 
+			return {
+				...state,
+				itineraries: []
+			}
 		case LOADING:
 			return {
 				...state,
@@ -48,11 +54,16 @@ export default (state = INITIAL_STATE, action) => {
 					}
 				})
 			};
-		case CHANGE_INPUT:
+		case UPDATE_FAV:
+			let itineraryWanted = state.itineraries.filter(el => el._id === action.payload.idItinerary)
+			itineraryWanted.rating = action.payload.newRating
 			return {
 				...state,
-				word: action.payload
-			};
+				itineraries: [
+					...state.itineraries,
+					itineraryWanted
+				]
+			}
 		default:
 			return state;
 	}
