@@ -15,7 +15,7 @@ export const getAllCities = () => async dispatch => {
   });
 
   axios
-    .get(`${API_URL}/api/cities`)
+    .get(`/api/cities`)
     .then(data => {
       const { data: dataCities } = data.data;
       dispatch({
