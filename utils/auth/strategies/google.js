@@ -10,7 +10,7 @@ passport.use(
     {
       clientID: config.googleIdClient,
       clientSecret: config.googleSecretClient,
-      callbackURL: 'http://localhost:5001/api/auth/google/callback'
+      callbackURL: '/api/auth/google/callback'
     },
     async function(accessToken, refreshToken, profile, cb) {
       console.log('profile', profile);
