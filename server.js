@@ -7,6 +7,7 @@ require('./lib/mongodb');
 const citiesApi = require('./routes/api/cities');
 const itinerariesApi = require('./routes/api/itineraries');
 const activitiesApi = require('./routes/api/activities');
+const commentsApi = require('./routes/api/comments')
 const usersApi = require('./routes/api/users');
 const authApi = require('./routes/api/auth');
 const userItineraries = require('./routes/api/userItineraries');
@@ -28,6 +29,7 @@ app.use(express.static(join(__dirname, 'client','build')))
 citiesApi(app);
 itinerariesApi(app);
 activitiesApi(app);
+commentsApi(app);
 usersApi(app);
 authApi(app);
 userItineraries(app)
