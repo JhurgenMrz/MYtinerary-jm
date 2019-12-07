@@ -3,7 +3,7 @@ const Comment = require("../models/Comment");
 class CommentsService {
   async getComments(itineraryId) {
     try {
-      const comments = await Comment.find({ itineraryId });
+      const comments = await Comment.find({ itineraryId:itineraryId });
       return comments || [];
     } catch (err) {
       return err;

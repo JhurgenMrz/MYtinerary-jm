@@ -11,7 +11,7 @@ import { IoIosHeart, IoMdHeartEmpty } from "react-icons/io";
 import { useSpring, animated } from "react-spring";
 import "./Itinerary.css";
 import { ActivityByIitinerary } from "../ActivityByItinerary";
-import { Comments } from "../Comments";
+import Comments from "../Comments";
 import axios from "axios";
 import { Fav, NoFav } from "../../actions/favsActions";
 
@@ -124,15 +124,17 @@ const Itinerary = props => {
             )}
           </>
         </div>
-        <animated.div className={`Itinerary__activities`} style={fadeContent}>
-          <h4>Activities</h4>
-          <div className="Itinerary__activities__slider">
-            {activities.map((el, index) => {
-              return <ActivityByIitinerary key={el._id} activity={el} />;
-            })}
-          </div>
-          <Comments />
-        </animated.div>
+        {showContentItinerary && (
+          <animated.div className={`Itinerary__activities`} style={fadeContent}>
+            <h4>Activities</h4>
+            <div className="Itinerary__activities__slider">
+              {activities.map((el, index) => {
+                return <ActivityByIitinerary key={el._id} activity={el} />;
+              })}
+            </div>
+            <Comments idItinerary={itinerary._id}/>
+          </animated.div>
+        )}
         <div
           onClick={() => setShow(!showContentItinerary)}
           className="Itinerary__button"

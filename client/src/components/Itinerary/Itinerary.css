@@ -26,6 +26,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding: 4px;
 }
 
 .Itinerary__profile img {
@@ -36,13 +37,13 @@
 }
 .Itinerary__profile p {
   margin-top: 3px;
-  letter-spacing: 2px;
+  font-size: 14px;
 }
 
 .Itinerary__info {
   display: flex;
   flex-direction: column;
-  width: 60%;
+  width: 55%;
   cursor: pointer;
   outline-style: none;
   box-shadow: none;

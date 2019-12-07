@@ -6,10 +6,12 @@ import * as citiesActions from "../actions/citiesActions";
 import { City } from "../components/City";
 import Nav from "../components/Nav";
 import { NavBtn } from "../components/NavBtn";
+import { shuffle } from '../utils/shuffle'
 
 import "../styles/Cities.css";
 
 const Cities = props => {
+  console.log(props)
   const [showShearch, setShowSearch] = useState(false);
   const [loader, setLoader] = useState(false);
 
@@ -55,7 +57,7 @@ const Cities = props => {
           ></input>
         </section>
         {loader && <Loader />}
-        {props.loading ? <Loader /> : props.error ? <h3>{props.error}</h3> : ""}
+        {props.loading ? <Loader /> : props.error && <h3>{props.error}</h3> }
         <section className="Cities">
           {showShearch === true ? (
             props.filterCities.length === 0 ? (
@@ -85,7 +87,7 @@ const Cities = props => {
           )}
         </section>
       </div>
-      <NavBtn isCities />
+      <NavBtn isCities back={props.history.goBack}/>
     </>
   );
 };

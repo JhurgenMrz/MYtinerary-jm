@@ -49,3 +49,11 @@
 		letter-spacing: 10px;
 }
 
+.City__emojis{
+	position: absolute;
+	top: 10px;
+	right: 15px;
+	z-index: 2;
+	font-size: 25px;
+}
+

@@ -20,9 +20,38 @@
 }
 .Comments__container{
   margin-left: 10px;
+  margin-right: 10px;
   margin-bottom: 10px;
 }
 .Comments__container p{
   margin: 3px 0;
+}
 
+.Comments__comment{
+  display: flex;
+  align-items: center;
+  margin-bottom: 7px;
+  justify-content: space-between;
+}
+.Comments__comment>div p{
+  font-size: 15px;
+  margin-left: 10px;
+  font-weight: bold;
+}
+
+.Comments__content{
+  display: inherit;
+}
+
+.Comments__comment>div img{
+  width: 25px;
+  height: 25px;
+  overflow: hidden;
+  object-fit: cover;
+  border-radius: 100%;
+  margin-right: 5px;
+}
+.Comments__comment time{
+  margin-left: 15px;
+  font-size: 14px;
 }

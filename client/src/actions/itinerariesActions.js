@@ -16,9 +16,15 @@ export const getItineraries = CityId => async dispach => {
     .get(`/api/itineraries/${CityId}`)
     .then(data => {
       const { data: dataItineraries } = data.data;
+      //Order Itineraries 
+      const orderedItineraries = dataItineraries.sort((a, b)=>{
+        if(a.rating > b.rating) return -1
+        else if(b.rating > a.rating) return 1
+        else return 0
+      })
       dispach({
         type: GET_ITINERARIES,
-        payload: dataItineraries
+        payload: orderedItineraries
       });
     })
     .catch(err => {

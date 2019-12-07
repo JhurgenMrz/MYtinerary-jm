@@ -7,6 +7,8 @@ import {
   CHANGE_INPUT
 } from "../types/citiesTypes";
 
+import { shuffle } from '../utils/shuffle'
+
 
 export const getAllCities = () => async dispatch => {
   dispatch({
@@ -17,9 +19,10 @@ export const getAllCities = () => async dispatch => {
     .get(`/api/cities`)
     .then(data => {
       const { data: dataCities } = data.data;
+      const citiesRandom = shuffle(dataCities)
       dispatch({
         type: GET_ALL,
-        payload: dataCities
+        payload: citiesRandom
       });
     })
     .catch(err => {

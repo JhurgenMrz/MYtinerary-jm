@@ -6,13 +6,14 @@ import * as citiesActions from "../actions/citiesActions";
 import * as itinerariesActions from "../actions/itinerariesActions";
 import { City } from "../components/City";
 import { NavBtn } from "../components/NavBtn";
+import { Loader } from '../components/Loader'
 import Itinerary from "../components/Itinerary";
 const { getAllCities } = citiesActions;
 
 const { getItineraries, clearItineraries } = itinerariesActions;
 
 const Itineraries = props => {
-  // console.log(props);
+  console.log(props);
   const [citySelected, setCity] = useState([]);
   const cityId = props.match.params._id;
 
@@ -50,6 +51,9 @@ const Itineraries = props => {
           <h3>Available MYtineraries</h3>
         </section>
         <div className="Itineraries__container">
+          {
+            props.itineraries.loading && <Loader/>
+          }
           {props.itineraries.itineraries.map(el => {
             let Liked = false;
             if (!props.user.isAuthenticated) {
@@ -69,7 +73,7 @@ const Itineraries = props => {
           })}
         </div>
       </div>
-      <NavBtn isItineraries />
+      <NavBtn isItineraries back={props.history.goBack}/>
     </>
   );
 };

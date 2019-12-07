@@ -1,6 +1,9 @@
 const { Schema, model } = require("mongoose");
 
 const Comment = new Schema({
+  userId: {
+    type: Schema.Types.ObjectId
+  },
   itineraryId: {
     type: Schema.Types.ObjectId
   },
