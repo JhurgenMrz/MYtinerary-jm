@@ -14,6 +14,8 @@ class UserService {
   }
 
   async findOrCreate(profile) {
+    // const { _json } = profile;
+    // console.log('Json', _json);
     const { id, displayName: userName } = profile;
     const email = profile.emails[0].value;
     const avatarPicture = profile.photos[0].value;
@@ -75,12 +77,26 @@ class UserService {
     return User.find({ email: email });
   }
 
-  async createUser({ email, password, userName, avatarPicture, country, firstName, lastName }) {
+  async createUser({
+    email,
+    password,
+    userName,
+    avatarPicture,
+    country,
+    firstName,
+    lastName
+  }) {
     const hashedPassword = await bcrypt.hash(password, 10);
-    password = hashedPassword
+    password = hashedPassword;
     try {
       const userCreated = await User.create({
-        email, password, userName, avatarPicture, country, firstName, lastName
+        email,
+        password,
+        userName,
+        avatarPicture,
+        country,
+        firstName,
+        lastName
       });
       return userCreated;
     } catch (err) {

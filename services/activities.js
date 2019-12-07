@@ -25,6 +25,19 @@ class ActivitiesService {
       return err;
     }
   }
+  async insertComment(activity, itineraryId) {
+    const newActivity = {
+      itinerary_id: itineraryId,
+      ...activity
+    };
+    console.log(newActivity);
+    try {
+      const activityCreated = await Activity.create(newActivity);
+      return activityCreated || [];
+    } catch (err) {
+      return err;
+    }
+  }
   async deleteActivity(activityId) {
     try {
       const activityDeleted = await Activity.findByIdAndDelete(activityId);

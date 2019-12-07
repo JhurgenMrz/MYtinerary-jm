@@ -1,9 +1,30 @@
-const { Schema, model } = require("mongoose");
+const { Schema, model } = require('mongoose');
+
+const Comment = new Schema({
+  userId: {
+    type: Schema.Types.ObjectId
+  },
+  userName: {
+    type: String,
+    required: true
+  },
+  avatarPicture: {
+    type: String
+  },
+  commentContent: {
+    type: String,
+    required: true
+  },
+  date: {
+    type: Date,
+    default: Date.now()
+  }
+});
 
 const Activity = new Schema({
   itinerary_id: {
     type: Schema.Types.ObjectId,
-    ref: "itineraries",
+    ref: 'itineraries',
     required: true
   },
   activity_name: {
@@ -18,12 +39,13 @@ const Activity = new Schema({
     type: String,
     required: true
   },
-  rating:{
+  comments: [Comment],
+  rating: {
     type: Number
   },
-  price:{
+  price: {
     type: Number
   }
 });
 
-module.exports = model("activities", Activity);
+module.exports = model('activities', Activity);

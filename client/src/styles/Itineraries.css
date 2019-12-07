@@ -18,7 +18,8 @@
 
 .Itineraries__container{
     display: flex;
-    min-height: 80vh;
+    min-height: 400px;
     flex-direction: column;
     padding: 0 12px;
+    height: auto;
 }

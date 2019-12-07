@@ -8,7 +8,7 @@
     "server": "set NODE_ENV==='development' && nodemon server.js",
     "client": "npm start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "heroku-postbuild":"cd client && npm i && npm run build"
+    "heroku-postbuild": "cd client && npm i && npm run build"
   },
   "keywords": [],
   "author": "",

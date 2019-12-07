@@ -13,7 +13,7 @@ passport.use(
       callbackURL: '/api/auth/google/callback'
     },
     async function(accessToken, refreshToken, profile, cb) {
-      console.log('profile', profile);
+      // console.log('profile', profile);
       try {
         const user = await userService.findOrCreate(profile);
         return cb(null, user);

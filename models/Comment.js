@@ -1,10 +1,7 @@
-const { Schema, model } = require("mongoose");
+const { Schema, model } = require('mongoose');
 
 const Comment = new Schema({
   userId: {
-    type: Schema.Types.ObjectId
-  },
-  itineraryId: {
     type: Schema.Types.ObjectId
   },
   userName: {
@@ -24,4 +21,4 @@ const Comment = new Schema({
   }
 });
 
-module.exports = model("comments", Comment);
+module.exports = model('comments', Comment);

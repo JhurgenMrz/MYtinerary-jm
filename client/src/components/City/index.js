@@ -6,10 +6,10 @@ export const City = ({ city }) => {
 
   const rating = [];
 
-  const showRating = (rating) =>{
+  const showRating = (rating) => {
     let favNumber = []
     for (let i = 0; i < rating; i++) {
-        favNumber.push("😎");
+      favNumber.push("⭐");
     }
 
     return favNumber
@@ -19,7 +19,7 @@ export const City = ({ city }) => {
     <div className="City">
       <span className="City__emojis">
         {
-            showRating(city.rating)
+          showRating(city.rating)
         }
       </span>
       <img src={city.img_url} alt={city.city_name} />
