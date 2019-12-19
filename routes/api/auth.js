@@ -50,7 +50,7 @@ function authApi(app) {
       // });
       // return res.status(200).json({ user: { id, name, email }, token });
 
-      res.redirect(`http://localhost:3000/loaduser/${token}`);
+      res.redirect(`/loaduser/${token}`);
     }
   );
 
