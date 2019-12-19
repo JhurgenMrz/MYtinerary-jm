@@ -7,6 +7,7 @@ import { IoMdArrowDropright } from "react-icons/io";
 import "./Comments.css";
 import { Loader } from "../Loader";
 import axios from "axios";
+import { MdDeleteForever, MdEdit } from 'react-icons/md'
 
 const Comments = props => {
   // console.log(props);
@@ -16,7 +17,7 @@ const Comments = props => {
     content: ""
   });
 
-  async function submitComment (bodyComment){
+  async function submitComment(bodyComment) {
     // console.log(props.user)
     const commentResponse = await axios({
       url: `http://localhost:5001/api/comments/${activityId}`,
@@ -26,16 +27,16 @@ const Comments = props => {
         userName: props.user.user.userName,
         avatarPicture: props.user.user.avatarPicture
       },
-      method: 'post',
-      headers:{
-        "Content-Type":"application/json",
-        "Authorization": `bearer ${window.localStorage.getItem('token')}`
+      method: "post",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `bearer ${window.localStorage.getItem("token")}`
       }
-    })
+    });
 
-    getComments(activityId)
+    getComments(activityId);
 
-    console.log(commentResponse)
+    console.log(commentResponse);
   }
 
   const handleComment = event => {
@@ -61,15 +62,28 @@ const Comments = props => {
     <div className="Comments">
       <h4>Comments</h4>
       <div className="Comments__container">
-        { listOfComments.length !== 0 && listOfComments.map(comment => (
-          <section className="Comments__comment" key={comment._id}>
-            <div className="Comments__content">
-              <img src={comment.avatarPicture} alt={comment.userName} />
-              <p>{comment.commentContent}</p>
-            </div>
-            <Moment date={comment.date} fromNow />
-          </section>
-        ))}
+        {listOfComments.length !== 0 &&
+          listOfComments.map(commentItem => (
+            <section className="Comments__comment" key={commentItem._id}>
+              <div className="Comments__content">
+                <img
+                  src={commentItem.avatarPicture}
+                  alt={commentItem.userName}
+                />
+                <p>{commentItem.commentContent}</p>
+              </div>
+              <div className="Comments__commentOptions">
+                <Moment date={commentItem.date} fromNow />
+                {props.user.user &&
+                  commentItem.userId === props.user.user._id && (
+                    <div className="Comments__Options">
+                      <MdEdit/>
+                      <MdDeleteForever/>
+                    </div>
+                  )}
+              </div>
+            </section>
+          ))}
       </div>
       <div className="Comments__input">
         <input
@@ -83,7 +97,7 @@ const Comments = props => {
         <IoMdArrowDropright
           style={{ fontSize: "30px" }}
           onClick={() => {
-            submitComment(comment.content)
+            submitComment(comment.content);
             setValue({ content: "" });
           }}
         />

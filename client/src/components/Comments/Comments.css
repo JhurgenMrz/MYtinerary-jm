@@ -1,14 +1,14 @@
 .Comments {
   width: 100%;
-  padding: 10px 0 0 15px;
+  padding: 12px 0 5px 10px;
   box-sizing: border-box;
   position: absolute;
   bottom: 0;
-  height: 210px;
+  height: 220px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
 
 .Comments h4{
@@ -31,13 +31,13 @@
 }
 .Comments__container{
   margin-left: 10px;
-  margin-right: 10px;
   margin-bottom: 10px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   overflow: hidden;
   overflow-y: scroll;
+  width: 100%;
 }
 .Comments__container p{
   margin: 3px 0;
@@ -50,15 +50,21 @@
   align-items: center;
   margin-bottom: 7px;
   justify-content: space-between;
+  width: 100%;
+}
+.Comments__comment>p{
+  font-size: 14px
 }
 .Comments__comment>div p{
   font-size: 15px;
   margin-left: 10px;
   font-weight: bold;
+  text-align: left;
 }
 
 .Comments__content{
   display: inherit;
+  width: 75%;
 }
 
 .Comments__comment img{
@@ -72,6 +78,15 @@
   filter: brightness(100%);
 }
 .Comments__comment time{
-  margin-left: 15px;
-  font-size: 14px;
+  font-size: 12px;
+}
+.Comments__commentOptions{
+  display: flex;
+  flex-direction: column;
+}
+.Comments__Options{
+  display: flex;
+  justify-content: space-evenly;
+  cursor: pointer;
+
 }

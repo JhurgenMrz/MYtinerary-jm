@@ -31,13 +31,13 @@ const Itinerary = props => {
     // console.log("props", props);
   }, []);
 
-  const fadeContent = useSpring({
-    display: showContentItinerary ? "flex" : "none",
-    height: showContentItinerary ? 400 : 0,
-    config: {
-      duration: 1
-    }
-  });
+  // const fadeContent = useSpring({
+  //   display: showContentItinerary ? "flex" : "none",
+  //   height: showContentItinerary ? 500 : 0,
+  //   config: {
+  //     duration: 1
+  //   }
+  // });
   const fadeItinerary = useSpring({
     height: showContentItinerary ? 550 : 160,
     config: {

@@ -14,6 +14,7 @@
 .Itinerary__card {
   display: flex;
   padding: 10px 3px;
+  height: 105px;
 }
 
 .Itinerary__card > svg {
@@ -98,9 +99,11 @@ p {
   align-items: flex-start;
   max-width: 476px;
   width: 100%;
-  height: 390px;
+  height: 405px;
   scroll-snap-type: x proximity;
   overflow-x: scroll;
+  position: absolute;
+  bottom: 30px;
 }
 
 .Itinerary__activities__slider::-webkit-scrollbar {
@@ -121,7 +124,7 @@ p {
   cursor: pointer;
   font-size: 20px;
   position: absolute;
-  bottom: 10px;
+  bottom: 0;
 }
 
 .AlertAuth {

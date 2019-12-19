@@ -15,7 +15,8 @@ class CommentsService {
   async createComment(comment, activityId) {
     const newComment = {
       activityId,
-      ...comment
+      ...comment,
+      date: new Date()
     };
     console.log(newComment);
     try {
