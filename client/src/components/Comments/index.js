@@ -115,7 +115,7 @@ const Comments = props => {
       </div>
       <div className="Comments__input">
         {
-          props.user.user._id && 
+          props.user.user !== null && 
           <>
             <input
               value={commentValue}

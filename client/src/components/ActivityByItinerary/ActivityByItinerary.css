@@ -40,7 +40,7 @@
     top: 38%;
     width: 80%;
     background: white;
-    z-index: 2;
+    z-index: 1;
     height: 20px;
     display: flex;
     justify-content: space-around;
@@ -53,15 +53,15 @@
 }
 .ActivityByItinerary__price{
     position: absolute;
-    top: 5%;
+    top: 2%;
     background: white;
     display: flex;
     align-items: center;
     justify-content: space-around;
-    z-index: 2;
+    z-index: 1;
     height: 20px;
     width: 55px;
-    right: 5%;
+    right: 2%;
     border-radius: 10px;
 }
 .ActivityByItinerary__price p{
