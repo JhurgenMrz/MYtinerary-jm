@@ -12,7 +12,7 @@ const Activities = props => {
 
   async function getActivities() {
     const { data } = await Axios.get(
-      `http://localhost:5001/api/activities/${props.ItineraryId}`
+      `/api/activities/${props.ItineraryId}`
     );
     setActivities(data.data);
   }
