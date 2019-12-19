@@ -32,7 +32,7 @@ function userItineraries(app) {
     "/:idItineary",
     passport.authenticate("jwt", { session: false }),
     async function(req, res) {
-      console.log(req)
+      // console.log(req)
       const { _id: idUser } = req.user;
       const { idItineary } = req.params;
       //   console.log(idUser,idItineary)
@@ -42,7 +42,7 @@ function userItineraries(app) {
           idItineary
         );
         //Funciona!
-        console.log(userItinearies);
+        // console.log(userItinearies);
         res.status(200).json({
           data: userItinearies,
           message: "Liked Success"

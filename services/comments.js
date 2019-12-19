@@ -6,7 +6,7 @@ class CommentsService {
   async getComments(activityId) {
     try {
       const Comments = await Comment.find({activityId});
-      console.log(Comments);
+      // console.log(Comments);
       return Comments || [];
     } catch (err) {
       return err;

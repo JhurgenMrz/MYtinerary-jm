@@ -38,13 +38,16 @@ function commentsApi(app) {
   router.put("/:commentId", async function(req, res) {
     const { commentId } = req.params;
     const { body: commentContent } = req
-    const commentUpdated = await commentsService.updateComment(commentContent, commentId);
+    const commentUpdated = await commentsService.updateComment(commentContent.commentContent, commentId);
+    // console.log('Response', commentUpdated)
     //Funciona!
     res.status(200).json({
       data: commentUpdated,
       message: "comment Deleted"
     });
   });
+
+
   router.delete("/:commentId", async function(req, res) {
     const { commentId } = req.params;
     const commentDeleted = await commentsService.deleteComment(commentId);

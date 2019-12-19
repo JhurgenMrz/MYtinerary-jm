@@ -1,6 +1,6 @@
 .Comments {
   width: 100%;
-  padding: 12px 0 5px 10px;
+  padding: 15px 5px 5px 10px;
   box-sizing: border-box;
   position: absolute;
   bottom: 0;
@@ -21,6 +21,7 @@
   border-radius: 10px;
   border: none;
   background-color: rgb(221, 221, 221);
+  outline: none;
 }
 
 .Comments__input {
@@ -30,7 +31,6 @@
   cursor: pointer;
 }
 .Comments__container{
-  margin-left: 10px;
   margin-bottom: 10px;
   display: flex;
   flex-direction: column;
@@ -78,15 +78,18 @@
   filter: brightness(100%);
 }
 .Comments__comment time{
-  font-size: 12px;
+  font-size: 10px;
 }
 .Comments__commentOptions{
   display: flex;
   flex-direction: column;
+  text-align: right;
 }
 .Comments__Options{
   display: flex;
   justify-content: space-evenly;
   cursor: pointer;
-
+}
+.Comments__Options svg{
+  color: rgb(28, 78, 172);
 }

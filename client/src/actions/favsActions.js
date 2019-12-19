@@ -27,7 +27,7 @@ export const Fav = idItinerary => async (dispatch, getState) => {
         "Authorization": `bearer ${getState().user.token}`
       }
     });
-    console.log(data)
+    // console.log(data)
     // USER ITINERARIES FAV UPDATED
     dispatch({
       type: USER_ITINERARY_FAV,
@@ -48,7 +48,7 @@ export const NoFav = idItinerary => async (dispatch, getState) => {
         "Authorization": `bearer ${getState().user.token}`
       }
     });
-    console.log(data)
+    // console.log(data)
     //USER ITINERARIES FAV UPDATED
     dispatch({
       type: USER_ITINERARY_FAV,

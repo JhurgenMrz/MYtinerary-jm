@@ -7,18 +7,24 @@ import { IoMdArrowDropright } from "react-icons/io";
 import "./Comments.css";
 import { Loader } from "../Loader";
 import axios from "axios";
-import { MdDeleteForever, MdEdit } from 'react-icons/md'
+import { MdDeleteForever, MdEdit } from "react-icons/md";
 
 const Comments = props => {
   // console.log(props);
   const { activityId } = props;
   const [listOfComments, setComments] = useState([]);
-  const [comment, setValue] = useState({
-    content: ""
-  });
+  const [newComment, setNewComment] = useState(true);
+  const [commentIdToBeUpdated, setCommentId] = useState('');
+  const [commentValue, setComment] = useState("");
+
+  async function updateComment(commentContent, commentId) {
+    const response = await axios.put(`http://localhost:5001/api/comments/${commentId}`, {commentContent: commentContent});
+    getComments(activityId);
+    setCommentId('')
+    setComment('')
+  }
 
   async function submitComment(bodyComment) {
-    // console.log(props.user)
     const commentResponse = await axios({
       url: `http://localhost:5001/api/comments/${activityId}`,
       data: {
@@ -33,16 +39,33 @@ const Comments = props => {
         Authorization: `bearer ${window.localStorage.getItem("token")}`
       }
     });
-
     getComments(activityId);
+  }
 
-    console.log(commentResponse);
+  const deleteComment = (commendId) => {
+    axios.delete(`http://localhost:5001/api/comments/${commendId}`);
+    getComments(activityId);
   }
 
   const handleComment = event => {
     if (event.key === "Enter") {
-      submitComment(comment.content);
-      setValue({ content: "" });
+      if (newComment) {
+        submitComment(commentValue);
+        setComment("");
+      } else {
+        updateComment(commentValue, commentIdToBeUpdated);
+        setNewComment(true);
+      }
+    }
+  };
+
+  const sendCommentByClick = event => {
+    if(newComment){
+      submitComment(commentValue);
+      setComment("");
+    }else{
+      updateComment(commentValue, commentIdToBeUpdated);
+      setNewComment(true)
     }
   };
 
@@ -74,33 +97,40 @@ const Comments = props => {
               </div>
               <div className="Comments__commentOptions">
                 <Moment date={commentItem.date} fromNow />
-                {props.user.user &&
-                  commentItem.userId === props.user.user._id && (
-                    <div className="Comments__Options">
-                      <MdEdit/>
-                      <MdDeleteForever/>
-                    </div>
-                  )}
+                {props.user.user && commentItem.userId === props.user.user._id && (
+                  <div className="Comments__Options">
+                    <MdEdit
+                      onClick={() => {
+                        setNewComment(false);
+                        setComment(commentItem.commentContent);
+                        setCommentId(commentItem._id);
+                      }}
+                    />
+                    <MdDeleteForever onClick={()=>{deleteComment(commentItem._id)}}/>
+                  </div>
+                )}
               </div>
             </section>
           ))}
       </div>
       <div className="Comments__input">
-        <input
-          value={comment.content}
-          onChange={e => setValue({ content: e.target.value })}
-          type="text"
-          placeholder="Your Comment..."
-          name="comment"
-          onKeyDown={handleComment}
-        />
-        <IoMdArrowDropright
-          style={{ fontSize: "30px" }}
-          onClick={() => {
-            submitComment(comment.content);
-            setValue({ content: "" });
-          }}
-        />
+        {
+          props.user.user._id && 
+          <>
+            <input
+              value={commentValue}
+              onChange={e => setComment(e.target.value)}
+              type="text"
+              placeholder="Your Comment..."
+              name="comment"
+              onKeyDown={handleComment}
+            />
+            <IoMdArrowDropright
+              style={{ fontSize: "30px" }}
+              onClick={sendCommentByClick}
+            />
+          </>
+        }
       </div>
     </div>
   );

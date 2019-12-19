@@ -20,7 +20,7 @@ const App = props => {
     // console.log(props)
     if (window.localStorage.getItem("token")) {
       const token = window.localStorage.getItem("token");
-      console.log(token)
+      // console.log(token)
       props.getUserWithGoogle(token);
     }
   }, []);
