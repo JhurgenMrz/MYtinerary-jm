@@ -1,0 +1,30 @@
+.options_header{
+    height: auto;
+    margin-top: 30px;
+}
+.options_header img{
+    width: 100%;
+    position: relative;
+    top: 10px
+}
+.option__container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-bottom: 15px;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    
+}
+.option{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 3px solid rgb(255, 255, 255);
+    box-shadow: 0px 10px 7px -6px rgba(0,0,0,0.75);
+    padding: 5px;
+    color: #acdaff;
+    font-size: 60px;
+}

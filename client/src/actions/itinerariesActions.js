@@ -22,6 +22,9 @@ export const getItineraries = CityId => async dispach => {
         else if(b.rating > a.rating) return 1
         else return 0
       })
+
+      // console.log(orderedItineraries)
+
       dispach({
         type: GET_ITINERARIES,
         payload: orderedItineraries

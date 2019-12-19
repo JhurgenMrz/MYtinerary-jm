@@ -1,7 +1,18 @@
 .Comments {
   width: 100%;
-  padding-left: 15px;
+  padding: 10px 0 0 15px;
   box-sizing: border-box;
+  position: absolute;
+  bottom: 0;
+  height: 210px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.Comments h4{
+  margin: 0;
 }
 
 .Comments__input input {
@@ -22,9 +33,16 @@
   margin-left: 10px;
   margin-right: 10px;
   margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  overflow-y: scroll;
 }
 .Comments__container p{
   margin: 3px 0;
+  color: black;
+  position: relative;
 }
 
 .Comments__comment{
@@ -43,13 +61,15 @@
   display: inherit;
 }
 
-.Comments__comment>div img{
+.Comments__comment img{
   width: 25px;
   height: 25px;
   overflow: hidden;
   object-fit: cover;
   border-radius: 100%;
   margin-right: 5px;
+  position: relative;
+  filter: brightness(100%);
 }
 .Comments__comment time{
   margin-left: 15px;

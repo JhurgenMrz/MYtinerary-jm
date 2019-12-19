@@ -30,17 +30,16 @@ function authApi(app) {
     '/google/callback',
     passport.authenticate('google', {
       failureRedirect: '/login',
-      session: false
+      session: false,
     }),
     async (req, res, next) => {
       console.log(req.user);
 
-      const { _id: id, userName: name, email, avatarPicture } = req.user;
+      const { _id: id, userName: name, email } = req.user;
       const payload = {
         sub: id,
         name: name,
         email: email,
-        avatarPicture
       };
       const token = jwt.sign(payload, config.SecretKey, {
         expiresIn: '20m'
@@ -84,12 +83,11 @@ function authApi(app) {
             email: email,
             scopes: apiKey.scopes
           };
-          // console.log(config.SecretKey);
           const token = jwt.sign(payload, config.SecretKey, {
             expiresIn: '20m'
           });
           // res.cookie('token', token, {
-          //   httpOnly: config.dev,
+          //   httpOnly: true,
           //   secure: config.dev
           // });
           // console.log({ user: { userRequired } });

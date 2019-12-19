@@ -10,13 +10,13 @@ import {
 
 import axios from "axios";
 
-export const getComments = itineraryId => async dispatch => {
+export const getComments = ActivityId => async dispatch => {
   dispatch({
     type: LOADING_COMMENTS
   });
 
   try {
-    const { data } = await axios.get(`/api/comments/${itineraryId}`);
+    const { data } = await axios.get(`/api/comments/${ActivityId}`);
     console.log(data);
     if (data.data.length === 0) {
       dispatch({

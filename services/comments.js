@@ -1,17 +1,20 @@
-const Comment = require("../models/Comment");
+// const Activity = require("../models/Activity");
+const Comment = require('../models/Comment')
+
 
 class CommentsService {
-  async getComments(itineraryId) {
+  async getComments(activityId) {
     try {
-      const comments = await Comment.find({ itineraryId:itineraryId });
-      return comments || [];
+      const Comments = await Comment.find({activityId});
+      console.log(Comments);
+      return Comments || [];
     } catch (err) {
       return err;
     }
   }
-  async createComment(comment, itineraryId) {
+  async createComment(comment, activityId) {
     const newComment = {
-      itineraryId,
+      activityId,
       ...comment
     };
     console.log(newComment);
@@ -29,10 +32,10 @@ class CommentsService {
           _id: commentId
         },
         {
-            commentContent: commentContent
+          commentContent: commentContent
         },
         {
-            new: true
+          new: true
         }
       );
       return commentUpdated || [];

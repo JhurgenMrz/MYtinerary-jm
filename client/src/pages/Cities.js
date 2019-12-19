@@ -11,7 +11,7 @@ import { shuffle } from '../utils/shuffle'
 import "../styles/Cities.css";
 
 const Cities = props => {
-  console.log(props)
+  // console.log(props)
   const [showShearch, setShowSearch] = useState(false);
   const [loader, setLoader] = useState(false);
 

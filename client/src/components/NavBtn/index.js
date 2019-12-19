@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import "./NavBtn.css";
 
 export const NavBtn = props => {
-  console.log(props);
+  // console.log(props);
   const { isCities, isItineraries, back } = props;
   return (
     <section className="NavBtn__container">

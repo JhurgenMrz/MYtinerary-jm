@@ -11,9 +11,10 @@ import { IoIosHeart, IoMdHeartEmpty } from "react-icons/io";
 import { useSpring, animated } from "react-spring";
 import "./Itinerary.css";
 import { ActivityByIitinerary } from "../ActivityByItinerary";
-import Comments from "../Comments";
 import axios from "axios";
 import { Fav, NoFav } from "../../actions/favsActions";
+import { getAllActivities } from "../../actions/activitiesAction";
+import Activities from "../Activities";
 
 const Itinerary = props => {
   // console.log(props);
@@ -25,15 +26,9 @@ const Itinerary = props => {
   const [Liked, setLiked] = useState(isLiked);
   const [Rating, setRating] = useState(itinerary.rating);
 
-  async function fetchActivities() {
-    const { data } = await axios.get(
-      `https://mytinerary-jm.herokuapp.com/api/activities/${itinerary._id}`
-    );
-    setActivities(data.data);
-  }
-
   useEffect(() => {
-    fetchActivities();
+    // props.getAllActivities(itinerary._id)
+    // console.log("props", props);
   }, []);
 
   const fadeContent = useSpring({
@@ -76,7 +71,10 @@ const Itinerary = props => {
             {itinerary.userName && <p>{itinerary.userName}</p>}
           </div>
           <div
-            onClick={() => setShow(!showContentItinerary)}
+            onClick={() => {
+              // props.getAllActivities(itinerary._id)
+              setShow(!showContentItinerary)
+            }}
             className="Itinerary__info"
           >
             <h4>{itinerary.title}</h4>
@@ -124,17 +122,7 @@ const Itinerary = props => {
             )}
           </>
         </div>
-        {showContentItinerary && (
-          <animated.div className={`Itinerary__activities`} style={fadeContent}>
-            <h4>Activities</h4>
-            <div className="Itinerary__activities__slider">
-              {activities.map((el, index) => {
-                return <ActivityByIitinerary key={el._id} activity={el} />;
-              })}
-            </div>
-            <Comments idItinerary={itinerary._id}/>
-          </animated.div>
-        )}
+        {showContentItinerary && <Activities ItineraryId={itinerary._id} />}
         <div
           onClick={() => setShow(!showContentItinerary)}
           className="Itinerary__button"
@@ -158,4 +146,11 @@ const Itinerary = props => {
   );
 };
 
-export default connect(null, { Fav, NoFav })(Itinerary);
+const mapStateToProps = reducer => {
+  // console.log(reducer)
+  return reducer.itineraries;
+};
+
+export default connect(mapStateToProps, { Fav, NoFav, getAllActivities })(
+  Itinerary
+);

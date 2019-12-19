@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import Nav from '../components/Nav';
 import { Start } from '../components/Start/index';
 import { CarouselImg } from '../components/CarouselImg';
-import { Activities } from '../components/Activities';
+import { Options } from '../components/Options';
 import '../styles/LandingPage.css';
 import { connect } from 'react-redux';
 
@@ -10,7 +10,7 @@ const LandingPage = () => {
   return (
     <Fragment>
       <Nav />
-      <Activities />
+      <Options />
       <p className='presentation'>
         Find your perfect trip, designed by insiders who know and love their
         cities

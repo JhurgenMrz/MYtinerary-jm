@@ -13,7 +13,7 @@ const { getAllCities } = citiesActions;
 const { getItineraries, clearItineraries } = itinerariesActions;
 
 const Itineraries = props => {
-  console.log(props);
+  // console.log(props);
   const [citySelected, setCity] = useState([]);
   const cityId = props.match.params._id;
 

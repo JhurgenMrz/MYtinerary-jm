@@ -95,10 +95,10 @@ p {
 
 .Itinerary__activities__slider {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   max-width: 476px;
   width: 100%;
-  height: 170px;
+  height: 390px;
   scroll-snap-type: x proximity;
   overflow-x: scroll;
 }
@@ -107,9 +107,6 @@ p {
   /* display: none; */
 }
 
-.Itinerary__activities__slider div {
-  scroll-snap-align: center;
-}
 
 .Itinerary__button {
   display: flex;

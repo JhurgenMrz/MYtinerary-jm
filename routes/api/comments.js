@@ -7,21 +7,27 @@ function commentsApi(app) {
   const commentsService = new CommentsService();
   app.use("/api/comments/", router);
 
-  router.get("/:itineraryId", async function(req, res) {
-    const { itineraryId } = req.params;
-    const comments = await commentsService.getComments(itineraryId);
-    //Funciona!
-    res.status(200).json({
-      data: comments,
-      message: "comments Listed"
-    });
+  router.get("/:activityId", async function(req, res) {
+    const { activityId } = req.params;
+    try{
+      const comments = await commentsService.getComments(activityId);
+      //Funciona!
+      res.status(200).json({
+        data: comments,
+        message: "comments Listed"
+      });
+    } catch (e) {
+      res.status(500).json({
+        message: "Server Error"
+      })
+    }
   });
-  router.post("/:itineraryId", async function(req, res) {
-    const { itineraryId } = req.params;
+  router.post("/:activityId", async function(req, res) {
+    const { activityId } = req.params;
     const { body: comment } = req;
     const commentCreated = await commentsService.createComment(
       comment,
-      itineraryId
+      activityId
     );
     //Funciona!
     res.status(201).json({
