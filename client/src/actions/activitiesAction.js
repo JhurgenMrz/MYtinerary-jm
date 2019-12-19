@@ -6,7 +6,7 @@ export const getAllActivities = (ItineraryId) =>async (dispatch) => {
         type: LOADING_ACTIVITIES
     })
     try{
-        const {data} = await axios.get(`http://localhost:5001/api/activities/${ItineraryId}`)
+        const {data} = await axios.get(`/api/activities/${ItineraryId}`)
         // console.log('activities by itinerary',data.data)
 
         const ObjAcivity = {

@@ -18,7 +18,7 @@ const Comments = props => {
   const [commentValue, setComment] = useState("");
 
   async function updateComment(commentContent, commentId) {
-    const response = await axios.put(`http://localhost:5001/api/comments/${commentId}`, {commentContent: commentContent});
+    const response = await axios.put(`/api/comments/${commentId}`, {commentContent: commentContent});
     getComments(activityId);
     setCommentId('')
     setComment('')
@@ -26,7 +26,7 @@ const Comments = props => {
 
   async function submitComment(bodyComment) {
     const commentResponse = await axios({
-      url: `http://localhost:5001/api/comments/${activityId}`,
+      url: `/api/comments/${activityId}`,
       data: {
         commentContent: bodyComment,
         userId: props.user.user._id,
@@ -43,7 +43,7 @@ const Comments = props => {
   }
 
   const deleteComment = (commendId) => {
-    axios.delete(`http://localhost:5001/api/comments/${commendId}`);
+    axios.delete(`/api/comments/${commendId}`);
     getComments(activityId);
   }
 
@@ -71,7 +71,7 @@ const Comments = props => {
 
   async function getComments(activityId) {
     const { data } = await axios.get(
-      `http://localhost:5001/api/comments/${activityId}`
+      `/api/comments/${activityId}`
     );
     setComments(data.data);
   }

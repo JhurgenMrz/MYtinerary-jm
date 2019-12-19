@@ -144,7 +144,7 @@ export const login = ({ user_name, password }) => async dispatch => {
 export const getUserWithGoogle = token => async dispatch => {
   try {
     const response = await axios.get(
-      `http://localhost:5001/api/users/user-with-token`,
+      `/api/users/user-with-token`,
       {
         headers: {
           "Content-Type": "application/json",
