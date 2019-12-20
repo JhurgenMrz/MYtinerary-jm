@@ -1,12 +1,17 @@
 import React from "react";
 import "./ActivityByItinerary.css";
+import { Animated } from 'react-animated-css'
 import Comments from "../Comments";
 import { FaMapMarkedAlt } from "react-icons/fa";
 import { GiMoneyStack } from "react-icons/gi";
 
 export const ActivityByIitinerary = ({ activity }) => {
   return (
-    <div className="ActivityByItinerary__item">
+    <Animated 
+      className="ActivityByItinerary__item"
+      animationIn="fadeInLeft"
+      animationInDuration="500"
+    >
       <img src={activity.img_url} alt={activity.activity_name} />
       <p>{activity.activity_name}</p>
       <div className="ActivityByItinerary__address">
@@ -21,6 +26,6 @@ export const ActivityByIitinerary = ({ activity }) => {
         <GiMoneyStack style={{ color: "#4dd599" }} />
       </div>
       <Comments activityId={activity._id} />
-    </div>
+    </Animated>
   );
 };

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Animated } from 'react-animated-css'
 import "./City.css";
 
 export const City = ({ city }) => {
@@ -16,7 +17,11 @@ export const City = ({ city }) => {
   }
 
   return (
-    <div className="City">
+    <Animated 
+      className="City"
+      animationIn="bounceIn"
+      animationInDuration="700"  
+    >
       <span className="City__emojis">
         {
           showRating(city.rating)
@@ -24,6 +29,6 @@ export const City = ({ city }) => {
       </span>
       <img src={city.img_url} alt={city.city_name} />
       <p> {city.city_name} </p>
-    </div>
+    </Animated>
   );
 };

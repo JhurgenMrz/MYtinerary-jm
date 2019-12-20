@@ -139,7 +139,7 @@ p {
   align-items: center;
   justify-content: space-evenly;
   transition: all 500ms ease-in-out;
-  z-index: 1;
+  z-index: 2;
 }
 
 .AlertAuth .AlertAuth__btn {

@@ -27,7 +27,7 @@ const App = props => {
 
   return (
     <BrowserRouter>
-      <section className="App">
+      <div className="App">
         <Switch>
           <Route exact path="/" component={LandingPage} />
           <Route exact path="/token/:token" component={LandingPage} />
@@ -46,7 +46,7 @@ const App = props => {
           <Route exact path="/loaduser/:token" component={Loader} />
           <Route component={NotFound} />
         </Switch>
-      </section>
+      </div>
     </BrowserRouter>
   );
 };

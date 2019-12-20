@@ -9,6 +9,7 @@
     "md5": "^2.2.1",
     "moment-timezone": "^0.5.27",
     "react": "^16.10.2",
+    "react-animated-css": "^1.2.1",
     "react-dom": "^16.10.2",
     "react-gesture-gallery": "^1.1.0",
     "react-gesture-responder": "^2.1.0",

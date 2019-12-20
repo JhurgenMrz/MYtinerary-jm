@@ -6,7 +6,39 @@
     flex-direction: column;
     font-family: Arial, Helvetica, sans-serif;
 }
-.icon{
-    width: 100px;
-    height: 100px;
+.start h2{
+    font-weight: normal;
+    font-size: 25px;
+    margin: 7px 0;
 }
+.start>a>div>svg{
+    /* font-size: 120px; */
+    height: 150px;
+    width: 150px;
+    color: #fff;
+    stroke-width: 1;
+    /* animation: 1s rotateStart ease-in-out infinite; */
+    /* animation-delay: 1s; */
+}
+.start__animation{
+    animation-iteration-count: infinite;
+}
+
+/* @keyframes rotateStart{
+    0%{
+        transform: scale(1);
+        stroke-width: 0.9;
+
+    }
+    33%{
+        transform: rotate(-25deg) scale(1.1);
+        stroke-width: 1.2;
+
+    }
+    66%{
+        transform: rotate(20deg) scale(1.1);
+        stroke-width: 1.2;
+
+    } 
+} 
+*/

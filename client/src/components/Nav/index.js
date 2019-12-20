@@ -22,11 +22,8 @@ const Menu = ({ show }) => {
       <Link to="/">
         <h4>Home</h4>
       </Link>
-      <Link to="/">
-        <h4>Home</h4>
-      </Link>
-      <Link to="/">
-        <h4>Home</h4>
+      <Link to="/cities">
+        <h4>Cities</h4>
       </Link>
     </animated.section>
   );

@@ -11,7 +11,7 @@ import {
 } from "../types/usersTypes";
 
 const INITIAL_STATE = {
-  user: {},
+  user: null,
   token: localStorage.getItem("token"),
   isAuthenticated: false,
   isLoading: false
